@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chattea - Profile</title>
+    <link rel="stylesheet" href="coffee.css">
+    <link rel="icon" href="logo chattea.svg" type="image/svg+xml">
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .profile-header {
+            background: var(--primary-dark);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--accent-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-dark);
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .coffee-preference {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .coffee-preference span {
+            background: var(--accent-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--secondary-dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .bio-section {
+            background: var(--primary-dark);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .favorite-cafes {
+            background: var(--primary-dark);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .cafe-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cafe-item {
+            background: var(--secondary-dark);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cafe-icon {
+            font-size: 1.5rem;
+        }
+
+        .top-nav {
+            background: var(--primary-dark);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.8rem;
+            background: var(--accent-dark);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle button {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .home-link .coffee-cup {
+            width: 24px;
+            height: 30px;
+        }
+
+        .coffee-quiz, .recent-activity, .achievements, .coffee-recipes {
+            background: var(--primary-dark);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-results {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .quiz-badge {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--secondary-dark);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .badge-icon {
+            font-size: 2rem;
+        }
+
+        .retake-quiz {
+            background: var(--accent-dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: var(--text-dark);
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .activity-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--secondary-dark);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .activity-time {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .achievement-badge {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--secondary-dark);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .recipe-card {
+            background: var(--secondary-dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .recipe-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .recipe-steps {
+            margin-top: 1rem;
+        }
+
+        .recipe-steps ol {
+            margin-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="coffeetest.html" class="home-link interactive-element">
+            <div class="coffee-cup">
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="cup">
+                    <div class="handle"></div>
+                </div>
+            </div>
+            <span>Chattea Home</span>
+        </a>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-header fade-in">
+            <div class="profile-avatar">J</div>
+            <div class="profile-info">
+                <h1 class="profile-name">Jessica</h1>
+                <div class="coffee-preference">
+                    <span>☕ Macchiato Enthusiast</span>
+                </div>
+                <p>Marketing student at Griffith University • Coffee Explorer • Social Butterfly</p>
+            </div>
+        </div>
+
+        <div class="profile-stats fade-in">
+            <div class="stat-card interactive-element">
+                <div class="stat-number">42</div>
+                <div>Cafe Check-ins</div>
+            </div>
+            <div class="stat-card interactive-element">
+                <div class="stat-number">156</div>
+                <div>Chat Messages</div>
+            </div>
+            <div class="stat-card interactive-element">
+                <div class="stat-number">15</div>
+                <div>Active Lobbies</div>
+            </div>
+        </div>
+
+        <div class="bio-section fade-in">
+            <h2>About Me</h2>
+            <p>24-year-old marketing student with a passion for discovering new coffee spots and meeting fellow coffee enthusiasts. When I'm not studying or working on my marketing projects, you'll find me cafe-hopping around Gold Coast or engaging in coffee-related discussions.</p>
+            <p>Looking to connect with people who share my enthusiasm for quality coffee and good conversation!</p>
+        </div>
+
+        <div class="favorite-cafes fade-in">
+            <h2>Favorite Coffee Spots</h2>
+            <div class="cafe-list">
+                <div class="cafe-item interactive-element">
+                    <div class="cafe-icon">🏆</div>
+                    <div>
+                        <h3>Cavill Avenue Roasters</h3>
+                        <p>Best Macchiato in town!</p>
+                    </div>
+                </div>
+                <div class="cafe-item interactive-element">
+                    <div class="cafe-icon">⭐</div>
+                    <div>
+                        <h3>Broadbeach Coffee Co.</h3>
+                        <p>Great study spot</p>
+                    </div>
+                </div>
+                <div class="cafe-item interactive-element">
+                    <div class="cafe-icon">💝</div>
+                    <div>
+                        <h3>Surfers Paradise Brew</h3>
+                        <p>Amazing atmosphere</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="coffee-quiz fade-in">
+            <h2>Coffee Personality Quiz</h2>
+            <div class="quiz-results">
+                <div class="quiz-badge">
+                    <span class="badge-icon">🎯</span>
+                    <div class="badge-info">
+                        <h3>Macchiato Master</h3>
+                        <p>Your perfect match!</p>
+                    </div>
+                </div>
+                <div class="quiz-details">
+                    <p>Based on your preferences, you're a sophisticated coffee lover who appreciates the perfect balance of espresso and milk foam.</p>
+                    <button class="retake-quiz interactive-element">Retake Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-activity fade-in">
+            <h2>Recent Activity</h2>
+            <div class="activity-feed">
+                <div class="activity-item">
+                    <div class="activity-icon">☕</div>
+                    <div class="activity-content">
+                        <p>Checked in at Cavill Avenue Roasters</p>
+                        <span class="activity-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">💬</div>
+                    <div class="activity-content">
+                        <p>Started a new discussion in Gold Coast Coffee Lovers</p>
+                        <span class="activity-time">5 hours ago</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">⭐</div>
+                    <div class="activity-content">
+                        <p>Added a new favorite cafe</p>
+                        <span class="activity-time">Yesterday</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievements fade-in">
+            <h2>Achievement Badges</h2>
+            <div class="badge-grid">
+                <div class="achievement-badge interactive-element">
+                    <div class="badge-icon">🌟</div>
+                    <div class="badge-info">
+                        <h3>Coffee Explorer</h3>
+                        <p>Visited 10+ cafes</p>
+                    </div>
+                </div>
+                <div class="achievement-badge interactive-element">
+                    <div class="badge-icon">💬</div>
+                    <div class="badge-info">
+                        <h3>Social Butterfly</h3>
+                        <p>100+ chat messages</p>
+                    </div>
+                </div>
+                <div class="achievement-badge interactive-element">
+                    <div class="badge-icon">🎯</div>
+                    <div class="badge-info">
+                        <h3>Macchiato Master</h3>
+                        <p>Perfect coffee match</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="coffee-recipes fade-in">
+            <h2>Favorite Coffee Recipes</h2>
+            <div class="recipe-grid">
+                <div class="recipe-card interactive-element">
+                    <div class="recipe-icon">☕</div>
+                    <div class="recipe-content">
+                        <h3>Perfect Macchiato</h3>
+                        <p>Double shot espresso with a dollop of milk foam</p>
+                        <div class="recipe-steps">
+                            <ol>
+                                <li>Pull a double shot of espresso</li>
+                                <li>Steam milk until micro-foam forms</li>
+                                <li>Add a small dollop of foam</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="recipe-card interactive-element">
+                    <div class="recipe-icon">🧊</div>
+                    <div class="recipe-content">
+                        <h3>Cold Brew</h3>
+                        <p>12-hour slow-steeped cold coffee</p>
+                        <div class="recipe-steps">
+                            <ol>
+                                <li>Coarse grind coffee beans</li>
+                                <li>Steep in cold water for 12 hours</li>
+                                <li>Strain and serve over ice</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="theme-toggle interactive-element">
+        <button onclick="toggleTheme()">☕</button>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'iced' ? 'hot' : 'iced';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Initialize theme from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'hot';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hot Coffee Theme */
+:root {
+    --primary-dark: #422724;  /* Dark roast */
+    --secondary-dark: #644640; /* Medium roast */
+    --accent-dark: #95635b;   /* Light roast */
+    --text-dark: #d7bea7;     /* Light cream */
+    --background-dark: #2C1810; /* Espresso */
+}
+
+/* Iced Coffee Theme */
+:root[data-theme="iced"] {
+    --primary-dark: #34272c;  /* Dark iced */
+    --secondary-dark: #524750; /* Medium iced */
+    --accent-dark: #7d6471;   /* Light iced */
+    --text-dark: #cebeb6;     /* Light cream */
+    --background-dark: #1A0F0A; /* Dark iced */
+}
+
+body {
+    background-color: var(--background-dark);
+    font-family: 'Calibri', sans-serif;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+header {
+    background-color: var(--primary-dark);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+nav {
+    background-color: var(--secondary-dark);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.section {
+    background-color: var(--primary-dark);
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Interactive elements */
+.interactive-element {
+    transition: transform 0.2s ease;
+}
+
+.interactive-element:hover {
+    transform: scale(1.05);
+}
+
+header h1 {
+    margin: 0;
+    color: #e6d5d0; /* Brighter light coffee color for better contrast */
+    font-size: 2em;
+}
+
+nav a {
+    color: #e6d5d0; /* Brighter light coffee color for better contrast */
+    text-decoration: none;
+    margin: 0 15px;
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a:active {
+    color: #4b3832; /* Coffee bean color */
+    background-color: #d9b08c; /* Light coffee color */
+    border-radius: 5px;
+}
+
+nav a ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a ul li {
+    display: inline;
+    margin-right: 20px;
+}   
+
+nav ul li:hover {
+    background-color: var(--accent-dark);
+    border-radius: 5px;
+    color: var(--text-dark);
+}
+
+nav ul li:active {
+    background-color: var(--secondary-dark);
+    border-radius: 5px;
+    color: var(--text-dark);
+}
+
+nav ul li a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+nav ul li a:active {
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+/* navigation ends*/
+
+
+main {
+    padding: 20px;
+    padding-top: 60px; /* Add padding to the top to account for the fixed navigation */
+}
+
+footer {
+    background-color: var(--primary-dark);
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -4px 2px -2px gray;
+}
+
+footer p {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px;
+    display: block;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--secondary-dark);
+    padding: 0;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li {
+    width: 200px;
+    margin: 0;
+}
+
+nav ul li ul li a {
+    padding: 10px;
+    color: var(--text-dark);
+}
+
+nav ul li ul li a:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Remove duplicate container styles */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 50px; /* Adjust the height as needed */
+    margin-right: 20px;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding-top: 10px;
+    min-height: 70px;
+    border-top: 1px solid #eaeaea;
+    text-align: center;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.coffee-cup, .iced-glass {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+}
+
+.iced-glass {
+    width: 40px;
+    height: 50px;
+    background: var(--text-dark);
+    border-radius: 4px;
+    border: 2px solid var(--accent-dark);
+}
+
+[data-theme="iced"] .iced-glass {
+    opacity: 1;
+}
+
+[data-theme="iced"] .coffee-cup {
+    opacity: 0;
+}
+
+
+

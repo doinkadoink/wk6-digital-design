@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body    {
+
+
+    background-color: rgb(200, 167, 135);
+}
+
+title {
+
+color: black;
+font-size: 20px;    
+float: auto;
+text-decoration-color: brown;
+
+
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('https://fastly.picsum.photos/id/56/2880/1920.jpg?hmac=BIplhYgNZ9bsjPXYhD0xx6M1yPgmg4HtthKkCeJp6Fk');
+    text-shadow: #3f2033 0px 0px 10px;
+    height: fit-content;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+
+}
+
+section 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://fastly.picsum.photos/id/56/2880/1920.jpg?hmac=BIplhYgNZ9bsjPXYhD0xx6M1yPgmg4HtthKkCeJp6Fk');
+    text-shadow: #3f2033 0px 0px 10px;
+    height: fit-content;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+/* Navigation starts */
+
+nav a img {
+    width: 189px;
+    height: 141px;
+    margin-left: 40%;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}   
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+nav ul li:hover {
+    background-color: #000000;
+    border-radius: 5px;
+    color: rgb(170, 0, 255);
+}
+nav ul li:active {
+    background-color: #008937;
+    border-radius: 5px;
+    color: rgb(170, 0, 255);
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+nav
+{
+    float: right;
+    width: 100%;
+    margin-left: 50px;
+   box-shadow: #333 0px 0px 10px;
+   justify-content: center ;
+   display: flex;
+   align-items: center;
+   position: fixed;
+   top: 40px;
+}
+
+/* navigation ends */
+
+.logo {
+    float: left;
+    margin-left: 20px;
+    background-image: url('lecup.png');
+    width: 189px;
+    height: 141px;
+}
+
+.menu {
+    margin-right: 20px;
+    display: inline;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding-top: 10px;
+    min-height: 70px;
+    border-top: 1px solid #eaeaea;
+    text-align: center;
+}
