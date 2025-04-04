@@ -258,8 +258,8 @@
             background: linear-gradient(
                 to bottom,
                 var(--text-dark) 0%,
-                var(--text-dark) 60%,
-                var(--primary-dark) 60%,
+                var(--text-dark) 70%,    /* Changed from 60% to 70% */
+                var(--primary-dark) 70%,  /* Changed from 60% to 70% */
                 var(--primary-dark) 100%
             );
             position: relative;
@@ -297,7 +297,7 @@
 
         .coffee-divider {
             position: absolute;
-            top: 60%;
+            top: 70%;    /* Changed from 60% to 70% */
             left: 0;
             right: 0;
             height: 80px;
@@ -371,7 +371,7 @@
             padding: 2rem;
             position: relative;
             z-index: 2;
-            margin-top: 40vh;
+            margin-top: 75vh;    /* Changed from 50vh to 75vh to position below the divider */
         }
 
         .lobby-list {
@@ -508,6 +508,12 @@
                     <span class="word-box chat-box">Chat</span>
                     <span class="word-box tea-box">tea</span>
                 </h1>
+                <div class="giant-coffee-container">
+                    <div class="giant-cup">
+                        <div class="giant-coffee"></div>
+                        <div class="coffee-stream"></div>
+                    </div>
+                </div>
             </div>
             <div class="auth-buttons">
                 <button class="auth-button signup-btn">Sign Up</button>
@@ -593,3 +599,77 @@
     </script>
 </body>
 </html>
+
+.giant-coffee-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top: 2rem;
+}
+
+.giant-cup {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 160px;
+    background: var(--text-dark);
+    border-radius: 0 0 100px 100px;
+    transform-origin: center;
+    transform: translateX(-50%) perspective(500px) rotateX(30deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.giant-coffee {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 40px;
+    background: var(--primary-dark);
+    border-radius: 50%;
+    transform-origin: center;
+    transform: translateX(-50%) perspective(500px) rotateX(30deg);
+    animation: coffeeAppear 1s ease forwards;
+}
+
+.coffee-stream {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    background: var(--primary-dark);
+    height: 0;
+    animation: pourCoffee 2s ease forwards;
+    animation-delay: 1s;
+}
+
+@keyframes coffeeAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) perspective(500px) rotateX(30deg) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) perspective(500px) rotateX(30deg) translateY(0);
+    }
+}
+
+@keyframes pourCoffee {
+    0% {
+        height: 0;
+        transform: translateX(-50%) scaleY(0);
+    }
+    100% {
+        height: calc(70vh - 60px);
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+
+/* Update these styles to ensure the coffee color changes with theme */
+[data-theme="iced"] .giant-coffee,
+[data-theme="iced"] .coffee-stream {
+    background: var(--primary-dark);
+}
