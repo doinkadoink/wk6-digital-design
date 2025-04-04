@@ -223,6 +223,14 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-family: "Ellograph CF", serif;  /* Updated font */
+        }
+
+        .lobby-info h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            font-family: "Eras Bold ITC", sans-serif;  /* Primary font */
         }
 
         .sidebar-nav a:hover {
@@ -278,16 +286,19 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            font-family: "Eras Bold ITC", sans-serif;
         }
 
         .word-box {
             padding: 0.2em 0.4em;
             border-radius: 8px;
+            font-family: "Eras Bold ITC", sans-serif;
         }
 
-        .chat-box {
-            background: var(--primary-dark);
-            color: var(--text-dark);
+        .chat-box, .tea-box {
+            font-family: 'Eras Bold ITC' !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .tea-box {
@@ -297,7 +308,7 @@
 
         .coffee-divider {
             position: absolute;
-            top: 70%;    /* Changed from 60% to 70% */
+            top: 60%;    
             left: 0;
             right: 0;
             height: 80px;
@@ -580,8 +591,8 @@
         <main class="main-content">
             <div class="main-header">
                 <h1 class="main-title">
-                    <span class="word-box chat-box">Chat</span>
-                    <span class="word-box tea-box">tea</span>
+                    <span class="word-box chat-box" style="font-family: 'Eras Bold ITC' !important;">Chat</span>
+                    <span class="word-box tea-box" style="font-family: 'Eras Bold ITC' !important;">tea</span>
                 </h1>
                 <div class="giant-coffee-container">
                     <div class="giant-cup">

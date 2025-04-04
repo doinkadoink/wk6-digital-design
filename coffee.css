@@ -1,7 +1,25 @@
-*{
+@font-face {
+    font-family: 'Eras Bold ITC';
+    src: local('Eras Bold ITC');
+}
+
+@font-face {
+    font-family: 'Ellograph CF';
+    src: local('Ellograph CF');
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Ellograph CF", serif;  /* Secondary font */
+}
+
+h1, h2, h3, h4, h5, h6,
+.main-title,
+.auth-button,
+.sidebar-nav a {
+    font-family: "Eras Bold ITC", sans-serif;  /* Primary font */
 }
 
 html {
