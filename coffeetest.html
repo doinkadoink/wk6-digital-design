@@ -266,12 +266,60 @@
             background: linear-gradient(
                 to bottom,
                 var(--text-dark) 0%,
-                var(--text-dark) 70%,    /* Changed from 60% to 70% */
-                var(--primary-dark) 70%,  /* Changed from 60% to 70% */
+                var(--text-dark) 45%,    /* Adjusted from 50% to 45% */
+                var(--primary-dark) 45%,  /* Adjusted from 50% to 45% */
                 var(--primary-dark) 100%
             );
             position: relative;
             overflow-x: hidden;
+        }
+
+        /* First, remove all existing coffee divider styles */
+        
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            min-height: 100vh;
+            background: linear-gradient(
+                to bottom,
+                var(--text-dark) 0%,
+                var(--text-dark) 45%,
+                var(--primary-dark) 45%,
+                var(--primary-dark) 100%
+            );
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Updated divider styles with new z-index values and simplified clip-path */
+        .coffee-divider-back {
+            position: absolute;
+            top: 35%;
+            left: 0;
+            right: 0;
+            height: 160px;
+            background: var(--secondary-dark);
+            clip-path: path('M0,80 C250,80 350,0 500,0 C650,0 750,80 1000,80 L1000,160 L0,160 Z');
+            transform: scaleX(-1);
+            z-index: 3;
+        }
+        
+        .coffee-divider {
+            position: absolute;
+            top: 35%;
+            left: 0;
+            right: 0;
+            height: 160px;
+            background: var(--primary-dark);
+            clip-path: path('M0,80 C250,80 350,0 500,0 C650,0 750,80 1000,80 L1000,160 L0,160 Z');
+            z-index: 4;
+        }
+
+        .lobbies-container {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            margin-top: 22vh;    /* Changed from 45vh to 22vh */
         }
 
         .main-header {
@@ -295,10 +343,16 @@
             font-family: "Eras Bold ITC", sans-serif;
         }
 
-        .chat-box, .tea-box {
+        .chat-box {
+            background-color: var(--chat-box-warm);
+            color: var(--text-dark) !important;
             font-family: 'Eras Bold ITC' !important;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        [data-theme="iced"] .chat-box {
+            background-color: var(--chat-box-cool);
         }
 
         .tea-box {
@@ -591,8 +645,8 @@
         <main class="main-content">
             <div class="main-header">
                 <h1 class="main-title">
-                    <span class="word-box chat-box" style="font-family: 'Eras Bold ITC' !important;">Chat</span>
-                    <span class="word-box tea-box" style="font-family: 'Eras Bold ITC' !important;">tea</span>
+                    <span class="word-box chat-box">Chat</span>
+                    <span class="word-box tea-box">tea</span>
                 </h1>
                 <div class="giant-coffee-container">
                     <div class="giant-cup">
@@ -608,6 +662,7 @@
             </div>
             
             <div class="coffee-divider"></div>
+            <div class="coffee-divider-back"></div>
 
             <div class="lobbies-container">
                 <div class="lobby-list">
