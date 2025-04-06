@@ -274,10 +274,6 @@
             overflow-x: hidden;
         }
 
-        /* Adjust divider positions */
-        .coffee-divider, .coffee-divider-back, .coffee-divider-back-2 {
-            top: 48%;    /* Adjusted from 38% to 48% to move dividers down */
-        }
 
         .lobbies-container {
             padding: 2rem;
@@ -530,77 +526,39 @@
         
         /* Define each divider once and only once */
         .coffee-divider {
-        position: absolute;
-        top: 48%;
-        left: -18%;
-        right: 0;
-        height: 160px;
-        background: var(--primary-dark);
-        clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
-        transform: translateY(100%);
-        z-index: 4;
-        animation: dividerRise 1s ease-out forwards;
-        animation-delay: 2s;
+            position: absolute;
+          top: 48%;
+          left: -18%;
+          right: 0;
+          height: 240px;
+          background: var(--primary-dark);
+          clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+           transform: translateY(100%);
+           z-index: 4;
+           animation: 
+              dividerRise 1s ease-out forwards,
+               waveMotionMain 12s ease-in-out infinite;
+         animation-delay: 2s, 3s;
         }
+        @keyframes waveMotionMain {
+          0% {
+              transform: translateY(0) translateX(5%);
+           }
+           25% {
+               transform: translateY(-8px) translateX(3%);
+           }
+           50% {
+              transform: translateY(0) translateX(0%);
+           }
+          75% {
+              transform: translateY(8px) translateX(3%);
+           }
+          100% {
+              transform: translateY(0) translateX(5%);
+          }
+}
         
-        /* Lower the background dividers by setting them to 68% (58% + 10%) */
-        .coffee-divider-back {
-        position: absolute;
-        top: 68%;
-        left: +30%;
-        right: -30%;
-        height: 160px;
-        background: var(--secondary-dark);
-        clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
-        transform: scaleX(-1) translateY(100%);
-        z-index: 3;
-        animation: dividerRiseBack 1s ease-out forwards;
-        animation-delay: 2s;
-        }
-        
-        .coffee-divider-back-2 {
-        position: absolute;
-        top: 68%;
-        left: -40%;
-        right: +20%;
-        height: 160px;
-        background: var(--secondary-dark);
-        clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
-        transform: scaleX(1) translateY(100%);
-        z-index: 3;
-        animation: dividerRiseBack2 1s ease-out forwards;
-        animation-delay: 2s;
-        }
-        
-        /* DELETE these duplicate definitions completely */
-        /* Update the divider styles */
-        .coffee-divider-back {
-        position: absolute;
-        top: 38%;
-        left: +30%;
-        right: -30%;
-        height: 160px;
-        background: var(--secondary-dark);
-        clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
-        transform: scaleX(-1) translateY(100%);
-        z-index: 3;
-        animation: dividerRiseBack 1s ease-out forwards;
-        animation-delay: 2s;
-        }
-        
-        .coffee-divider-back-2 {
-        position: absolute;
-        top: 38%;
-        left: -40%;
-        right: +20%;
-        height: 160px;
-        background: var(--secondary-dark);
-        clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
-        transform: scaleX(1) translateY(100%);
-        z-index: 3;
-        animation: dividerRiseBack2 1s ease-out forwards;
-        animation-delay: 2s;
-        }
+
 
         @keyframes dividerRise {
             0% {
@@ -630,32 +588,71 @@
         /* Update the divider styles */
         .coffee-divider-back {
             position: absolute;
-            top: 38%;
-            left: +30%;
-            right: -30%;
-            height: 160px;
-            background: var(--secondary-dark);
-            clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
-            transform: scaleX(-1) translateY(100%);
-            z-index: 3;
-            animation: dividerRiseBack 1s ease-out forwards;
-            animation-delay: 2s;
+           top: 48%;
+          left: +30%;
+          right: -30%;
+          height: 160px;
+          background: var(--secondary-dark);
+          clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+          transform: scaleX(-1) translateY(100%);
+          z-index: 3;
+         animation: 
+               dividerRiseBack 1s ease-out forwards,
+             waveMotion1 8s ease-in-out infinite;
+         animation-delay: 2s, 3s;
         }
 
         .coffee-divider-back-2 {
             position: absolute;
-            top: 38%;
-            left: -40%;
-            right: +20%;
-            height: 160px;
-            background: var(--secondary-dark);
-            clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
-            transform: scaleX(1) translateY(100%);
-            z-index: 3;
-            animation: dividerRiseBack2 1s ease-out forwards;
-            animation-delay: 2s;
-        }
+          top: 48%;
+         left: -40%;
+          right: +20%;
+          height: 160px;
+         background: var(--secondary-dark);
+         clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+          transform: scaleX(1) translateY(100%);
+          z-index: 3;
+          animation: 
+                dividerRiseBack2 1s ease-out forwards,
+                waveMotion2 10s ease-in-out infinite;
+         animation-delay: 2s, 3s;
 
+        }
+        @keyframes waveMotion1 {
+    0% {
+        transform: scaleX(-1) translateY(0) translateX(-5%);
+    }
+    25% {
+        transform: scaleX(-1) translateY(-5px) translateX(-8%);
+    }
+    50% {
+        transform: scaleX(-1) translateY(0) translateX(-10%);
+    }
+    75% {
+        transform: scaleX(-1) translateY(5px) translateX(-8%);
+    }
+    100% {
+        transform: scaleX(-1) translateY(0) translateX(-5%);
+    }
+}
+
+@keyframes waveMotion2 {
+    0% {
+        transform: scaleX(1) translateY(0) translateX(5%);
+    }
+    25% {
+        transform: scaleX(1) translateY(5px) translateX(8%);
+    }
+    50% {
+        transform: scaleX(1) translateY(0) translateX(10%);
+    }
+    75% {
+        transform: scaleX(1) translateY(-5px) translateX(8%);
+    }
+    100% {
+        transform: scaleX(1) translateY(0) translateX(5%);
+    }
+}
         @keyframes dividerRiseBack {
             0% {
                 transform: scaleX(-1) translateY(100%) translateX(-5%);
