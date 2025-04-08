@@ -394,116 +394,120 @@
     </style>
 </head>
 <body>
-    <nav class="top-nav">
-        <a href="coffeetest.html" class="home-link interactive-element">
-            <span>Chattea Home</span>
-        </a>
-    </nav>
-    <div class="lobby-container">
-        <div class="lobby-header">
-            <div class="lobby-info">
-                <h2>Gold Coast Coffee Lovers</h2>
-                <span class="active-users">42 active</span>
-            </div>
-            <div class="theme-toggle interactive-element" onclick="toggleTheme()">
-                <div class="coffee-cup" style="opacity: 1;">
+    <div class="container">
+        <nav class="top-nav">
+            <a href="index.html" class="home-link interactive-element">
+                <div class="coffee-cup">
                     <div class="steam"></div>
-                    <div class="steam"></div>
-                    <div class="steam"></div>
-                    <div class="cup">
-                        <div class="handle"></div>
+                </div>
+            </a>
+        </nav>
+        <div class="lobby-container">
+            <div class="lobby-header">
+                <div class="lobby-info">
+                    <h2>Gold Coast Coffee Lovers</h2>
+                    <span class="active-users">42 active</span>
+                </div>
+                <div class="theme-toggle interactive-element" onclick="toggleTheme()">
+                    <div class="coffee-cup" style="opacity: 1;">
+                        <div class="steam"></div>
+                        <div class="steam"></div>
+                        <div class="steam"></div>
+                        <div class="cup">
+                            <div class="handle"></div>
+                        </div>
+                    </div>
+                    <div class="iced-glass" style="opacity: 0;">
+                        <div class="ice-cube"></div>
+                        <div class="ice-cube"></div>
+                        <div class="ice-cube"></div>
                     </div>
                 </div>
-                <div class="iced-glass" style="opacity: 0;">
-                    <div class="ice-cube"></div>
-                    <div class="ice-cube"></div>
-                    <div class="ice-cube"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="chat-container">
-            <div class="users-list">
-                <div class="user-item interactive-element">
-                    <div class="user-avatar">J</div>
-                    <div>
-                        <div>Jessica</div>
-                        <div class="coffee-preference">☕ Macchiato</div>
-                    </div>
-                </div>
-                <div class="user-item interactive-element">
-                    <div class="user-avatar">T</div>
-                    <div>
-                        <div>Taurice</div>
-                        <div class="coffee-preference">☕ Cold Brew</div>
-                    </div>
-                </div>
-                <!-- More users would be dynamically added here -->
             </div>
 
-            <div class="chat-content">
-                <div class="chat-messages">
-                    <div class="message">
+            <div class="chat-container">
+                <div class="users-list">
+                    <div class="user-item interactive-element">
                         <div class="user-avatar">J</div>
-                        <div class="message-content">
-                            <div>Hey everyone! Anyone tried the new cafe on Cavill Avenue?</div>
-                            <div class="message-meta">Jessica • 5 minutes ago</div>
+                        <div>
+                            <div>Jessica</div>
+                            <div class="coffee-preference">☕ Macchiato</div>
                         </div>
                     </div>
-                    <div class="message">
+                    <div class="user-item interactive-element">
                         <div class="user-avatar">T</div>
-                        <div class="message-content">
-                            <div>Yes! Their cold brew is amazing! 🧊☕</div>
-                            <div class="message-meta">Taurice • 3 minutes ago</div>
+                        <div>
+                            <div>Taurice</div>
+                            <div class="coffee-preference">☕ Cold Brew</div>
                         </div>
                     </div>
-                    <div class="message">
-                        <div class="user-avatar">M</div>
-                        <div class="message-content">
-                            <div>I love their latte art! The barista is so talented 🎨</div>
-                            <div class="message-meta">Mike • 10 minutes ago</div>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="user-avatar">S</div>
-                        <div class="message-content">
-                            <div>Their pastries are to die for! 🥐</div>
-                            <div class="message-meta">Sarah • 15 minutes ago</div>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="user-avatar">J</div>
-                        <div class="message-content">
-                            <div>Has anyone tried their seasonal special? The maple latte sounds interesting</div>
-                            <div class="message-meta">Jessica • 20 minutes ago</div>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="user-avatar">T</div>
-                        <div class="message-content">
-                            <div>The maple latte is good, but their signature cold brew is still my favorite</div>
-                            <div class="message-meta">Taurice • 25 minutes ago</div>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="user-avatar">M</div>
-                        <div class="message-content">
-                            <div>Anyone up for a coffee meetup this weekend? 🎉</div>
-                            <div class="message-meta">Mike • 30 minutes ago</div>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="user-avatar">S</div>
-                        <div class="message-content">
-                            <div>Count me in! I'll bring some homemade cookies 🍪</div>
-                            <div class="message-meta">Sarah • 35 minutes ago</div>
-                        </div>
-                    </div>
+                    <!-- More users would be dynamically added here -->
                 </div>
 
-                <div class="chat-input">
-                    <input type="text" placeholder="Type your message..." id="messageInput">
-                    <button onclick="sendMessage()" class="interactive-element">Send</button>
+                <div class="chat-content">
+                    <div class="chat-messages">
+                        <div class="message">
+                            <div class="user-avatar">J</div>
+                            <div class="message-content">
+                                <div>Hey everyone! Anyone tried the new cafe on Cavill Avenue?</div>
+                                <div class="message-meta">Jessica • 5 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">T</div>
+                            <div class="message-content">
+                                <div>Yes! Their cold brew is amazing! 🧊☕</div>
+                                <div class="message-meta">Taurice • 3 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">M</div>
+                            <div class="message-content">
+                                <div>I love their latte art! The barista is so talented 🎨</div>
+                                <div class="message-meta">Mike • 10 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">S</div>
+                            <div class="message-content">
+                                <div>Their pastries are to die for! 🥐</div>
+                                <div class="message-meta">Sarah • 15 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">J</div>
+                            <div class="message-content">
+                                <div>Has anyone tried their seasonal special? The maple latte sounds interesting</div>
+                                <div class="message-meta">Jessica • 20 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">T</div>
+                            <div class="message-content">
+                                <div>The maple latte is good, but their signature cold brew is still my favorite</div>
+                                <div class="message-meta">Taurice • 25 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">M</div>
+                            <div class="message-content">
+                                <div>Anyone up for a coffee meetup this weekend? 🎉</div>
+                                <div class="message-meta">Mike • 30 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">S</div>
+                            <div class="message-content">
+                                <div>Count me in! I'll bring some homemade cookies 🍪</div>
+                                <div class="message-meta">Sarah • 35 minutes ago</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type your message..." id="messageInput">
+                        <button onclick="sendMessage()" class="interactive-element">Send</button>
+                    </div>
                 </div>
             </div>
         </div>

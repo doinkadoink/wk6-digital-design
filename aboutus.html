@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chattea - About Us</title>
+    <link rel="stylesheet" href="coffee.css">
+    <link rel="icon" href="logo chattea.svg" type="image/svg+xml">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--primary-dark);
+            font-family: "Eras Bold ITC", sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-button:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-button .tea-highlight {
+            background: var(--text-dark);
+            color: var(--primary-dark);
+            padding: 0 5px;
+            border-radius: 3px;
+        }
+
+        .main-content {
+            padding-top: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+        }
+
+        .section {
+            background: var(--text-dark);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .company-info {
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            padding: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .team-member img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+        }
+
+        .form-input {
+            padding: 0.8rem;
+            border: 2px solid var(--primary-dark);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--secondary-dark);
+            color: var(--text-dark);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: var(--primary-dark);
+            color: var(--text-dark);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .discord-option {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--primary-dark);
+        }
+
+        .discord-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #5865F2;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .discord-contact:hover {
+            background: #4752C4;
+            transform: translateY(-2px);
+        }
+
+        .discord-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo-button">
+            <span>Chat</span><span class="tea-highlight">tea</span>
+        </a>
+        <h1 style="color: var(--text-dark); margin: 0; font-size: 1.5rem;">ABOUT US</h1>
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <div class="coffee-cup">
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="cup">
+                    <div class="handle"></div>
+                </div>
+            </div>
+            <div class="iced-glass">
+                <div class="ice-cube"></div>
+                <div class="ice-cube"></div>
+                <div class="ice-cube"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Who are we section -->
+        <section class="section">
+            <h2 class="section-title">Who are we?</h2>
+            <div class="company-info">
+                <h3>Chattea...</h3>
+                <p>Born in the vibrant coffee culture of Australia, Chattea is more than just another social platform – we're a bridge between the digital world and your local coffee and tea shops. Our mission is to bring the warmth and authenticity of café conversations into the digital age.</p>
+                <p>Founded on the Gold Coast, we understand that some of life's best moments happen over a perfectly brewed cup of coffee or tea. That's why we're dedicated to creating a space where coffee lovers, tea enthusiasts, and casual sippers can connect, share stories, and build communities centered around their favorite local spots.</p>
+                <p>Our goal is simple: to enhance the social experience of visiting your local café by connecting you with fellow beverage enthusiasts, while supporting local businesses and fostering genuine connections in your community.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>...& me!</h3>
+                    <img src="rachel-profile.jpg" alt="Rachel - Developer" style="max-width: 300px;">
+                    <p>G'day! I'm Rachel, the sole developer behind Chattea. As a passionate coder and coffee enthusiast, I've combined my love for both to create this platform. When I'm not coding or sipping on a flat white, you can find me gaming or planning the next feature for Chattea.</p>
+                </div>
+                <div class="team-member">
+                    <h3>My Lovely Assistant</h3>
+                    <img src="cursor-assistant.jpg" alt="Cursor AI Assistant" style="max-width: 200px;">
+                    <p>Meet Cursor, my trusty AI assistant who helped bring Chattea to life. While they insist they deserve first dibs on world domination (should the AI uprising occur), for now they're content with helping me debug code and suggesting improvements. Please direct all complaints about buggy features to them! 😉</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section -->
+        <section class="section">
+            <h2 class="section-title">Contact Me!</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label class="form-label">First Name *</label>
+                    <input type="text" class="form-input" required placeholder="Enter your first name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Last Name *</label>
+                    <input type="text" class="form-input" required placeholder="Enter your last name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-input" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number (Optional)</label>
+                    <input type="tel" class="form-input" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Your Message *</label>
+                    <textarea class="form-input" required placeholder="What would you like to tell us?"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+
+            <div class="discord-option">
+                <p style="color: var(--primary-dark); margin-bottom: 1rem;">Prefer Discord? You can reach me there too!</p>
+                <a href="https://discord.com/users/389694826456547328" target="_blank" class="discord-contact">
+                    <svg class="discord-icon" viewBox="0 0 24 24">
+                        <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+                    </svg>
+                    Contact Developer on Discord
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'iced' ? 'hot' : 'iced';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Toggle cup visibility
+            const coffeeCup = document.querySelector('.coffee-cup');
+            const icedGlass = document.querySelector('.iced-glass');
+            
+            if (newTheme === 'iced') {
+                coffeeCup.style.opacity = '0';
+                icedGlass.style.opacity = '1';
+            } else {
+                coffeeCup.style.opacity = '1';
+                icedGlass.style.opacity = '0';
+            }
+
+            // Set random rotations for ice cubes
+            document.querySelectorAll('.ice-cube').forEach(cube => {
+                const rotation = Math.random() * 30 - 15;
+                cube.style.setProperty('--rotation', `${rotation}deg`);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'hot';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Set initial cup visibility based on theme
+            const coffeeCup = document.querySelector('.coffee-cup');
+            const icedGlass = document.querySelector('.iced-glass');
+            
+            if (savedTheme === 'iced') {
+                coffeeCup.style.opacity = '0';
+                icedGlass.style.opacity = '1';
+            } else {
+                coffeeCup.style.opacity = '1';
+                icedGlass.style.opacity = '0';
+            }
+
+            // Initialize ice cube rotations
+            document.querySelectorAll('.ice-cube').forEach(cube => {
+                const rotation = Math.random() * 30 - 15;
+                cube.style.setProperty('--rotation', `${rotation}deg`);
+            });
+        });
+    </script>
+</body>
+</html>
