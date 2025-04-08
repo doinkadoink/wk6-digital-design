@@ -62,63 +62,131 @@
             justify-content: center;
             align-items: center;
             padding-top: 80px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
         }
 
-        .cog-wrapper {
+        .coffee-machine {
             position: relative;
-            width: 800px;
-            height: 800px;
+            width: 900px;
+            height: 700px;
+            background: var(--accent-dark);
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 -10px 30px rgba(0, 0, 0, 0.2),
+                inset 0 10px 30px rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .cog {
+        .machine-screen {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background: var(--text-dark);
+            border-radius: 50%;
+            border: 15px solid var(--primary-dark);
+            box-shadow: 
+                0 0 20px rgba(0, 0, 0, 0.2),
+                inset 0 0 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dial-indicator {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 4px;
+            height: 110px;
+            background: var(--primary-dark);
+            top: 50%;
+            left: 50%;
+            transform-origin: center;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .cog-body {
+        .dial-indicator::after {
+            content: '';
             position: absolute;
-            width: 80%;
-            height: 80%;
-            left: 10%;
-            top: 10%;
-            background: var(--text-dark);
-            border-radius: 50%;
+            top: -5px;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid var(--accent-dark);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
 
-        .cog-tooth {
+        .machine-buttons {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            background: var(--text-dark);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .option-marker {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-dark);
+            font-size: 1.2rem;
             transform-origin: center;
-            left: calc(50% - 40px);
-            top: -40px;
         }
 
         .settings-content {
             position: absolute;
+            width: 100%;
+            height: 100%;
             z-index: 2;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-            align-items: center;
         }
 
         .settings-button {
+            position: absolute;
             background: none;
             border: none;
             color: var(--primary-dark);
             font-size: 1.5rem;
             cursor: pointer;
-            padding: 1rem 2rem;
-            position: relative;
+            padding: 1rem;
             transition: all 0.3s ease;
             font-family: "Eras Bold ITC", sans-serif;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            transform-origin: center;
+            text-align: center;
+            width: 200px;
+        }
+
+        .settings-button[data-rotation="0"] {
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .settings-button[data-rotation="90"] {
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .settings-button[data-rotation="180"] {
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .settings-button[data-rotation="270"] {
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .settings-button::after {
@@ -143,25 +211,68 @@
         }
 
         .settings-panel {
-            display: none;
             position: fixed;
             top: 50%;
-            right: 2rem;
+            right: -350px; /* Start off-screen */
             transform: translateY(-50%);
-            background: var(--primary-dark);
+            background: var(--text-dark);
             padding: 2rem;
             border-radius: 15px;
-            border: 2px solid var(--text-dark);
-            min-width: 300px;
+            border: 2px solid var(--primary-dark);
+            width: 300px;
+            max-width: 90vw;
             z-index: 3;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: right 0.3s ease-out;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .settings-panel.active {
+            right: 2rem;
             display: block;
         }
 
+        @media (max-width: 768px) {
+            .settings-panel {
+                width: 85vw;
+                padding: 1.5rem;
+            }
+            
+            .settings-panel.active {
+                right: 50%;
+                transform: translate(50%, -50%);
+            }
+        }
+
+        .machine-detail {
+            position: absolute;
+        }
+
+        .machine-detail.top {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 40px;
+            background: var(--primary-dark);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .machine-detail.bottom {
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 30px;
+            background: var(--primary-dark);
+            border-radius: 0 0 15px 15px;
+        }
+
         .panel-title {
-            color: var(--text-dark);
+            color: var(--primary-dark);
             margin-bottom: 1.5rem;
             text-align: center;
         }
@@ -171,7 +282,7 @@
         }
 
         .setting-label {
-            color: var(--text-dark);
+            color: var(--primary-dark);
             display: block;
             margin-bottom: 0.5rem;
         }
@@ -180,9 +291,14 @@
             width: 100%;
             padding: 0.5rem;
             background: var(--secondary-dark);
-            border: 1px solid var(--text-dark);
+            border: 1px solid var(--primary-dark);
             color: var(--text-dark);
             border-radius: 5px;
+        }
+
+        .setting-input::placeholder {
+            color: var(--text-dark);
+            opacity: 0.7;
         }
 
         .toggle-switch {
@@ -361,6 +477,34 @@
                 transform: translateY(-5px) rotate(var(--rotation));
             }
         }
+
+        /* Discord contact button styles */
+        .discord-contact {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #5865F2;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .discord-contact:hover {
+            background: #4752C4;
+            transform: translateY(-2px);
+        }
+
+        .discord-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
     </style>
 </head>
 <body>
@@ -368,6 +512,7 @@
         <a href="coffeetest.html" class="logo-button">
             <span>Chat</span><span class="tea-highlight">tea</span>
         </a>
+        <h1 style="color: var(--text-dark); margin: 0; font-size: 1.5rem;">SETTINGS</h1>
         <div class="theme-toggle" onclick="toggleTheme()">
             <div class="coffee-cup">
                 <div class="steam"></div>
@@ -386,16 +531,19 @@
     </header>
 
     <div class="settings-container">
-        <div class="cog-wrapper">
-            <div class="cog" id="cog">
-                <div class="cog-body"></div>
+        <div class="coffee-machine">
+            <div class="machine-detail top"></div>
+            <div class="machine-screen">
+                <div class="dial-indicator" id="dial"></div>
+                <div class="machine-buttons"></div>
+                <div class="settings-content">
+                    <button class="settings-button" data-rotation="0" data-panel="account">Account</button>
+                    <button class="settings-button" data-rotation="90" data-panel="notifications">Notifications</button>
+                    <button class="settings-button" data-rotation="180" data-panel="preferences">Preferences</button>
+                    <button class="settings-button" data-rotation="270" data-panel="help">Help & Support</button>
+                </div>
             </div>
-            <div class="settings-content">
-                <button class="settings-button" data-rotation="0" data-panel="account">Account</button>
-                <button class="settings-button" data-rotation="30" data-panel="notifications">Notifications</button>
-                <button class="settings-button" data-rotation="60" data-panel="preferences">Preferences</button>
-                <button class="settings-button" data-rotation="90" data-panel="help">Help & Support</button>
-            </div>
+            <div class="machine-detail bottom"></div>
         </div>
 
         <!-- Account Settings Panel -->
@@ -413,7 +561,7 @@
                 <label class="setting-label">Change Email</label>
                 <input type="email" class="setting-input" placeholder="New email">
             </div>
-            <button class="settings-button" style="color: #ff4444;">Delete Account</button>
+            <button class="settings-button" style="color: #ff4444; position: relative; width: 100%;">Delete Account</button>
         </div>
 
         <!-- Notifications Panel -->
@@ -456,6 +604,23 @@
                 <button class="settings-button">Retake Preference Quiz</button>
             </div>
         </div>
+
+        <!-- Help & Support Panel -->
+        <div class="settings-panel" id="help-panel">
+            <h2 class="panel-title">Help & Support</h2>
+            <div class="setting-item">
+                <label class="setting-label">Need assistance?</label>
+                <p style="color: var(--primary-dark); margin-bottom: 1rem;">
+                    Contact our support team or reach out to the developer directly.
+                </p>
+                <a href="https://discord.com/users/389694826456547328" target="_blank" class="discord-contact">
+                    <svg class="discord-icon" viewBox="0 0 24 24">
+                        <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+                    </svg>
+                    Contact Developer on Discord
+                </a>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -485,26 +650,39 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const cog = document.getElementById('cog');
+            const dial = document.getElementById('dial');
             const buttons = document.querySelectorAll('.settings-button');
             const panels = document.querySelectorAll('.settings-panel');
+            const machineButtons = document.querySelector('.machine-buttons');
+            let activePanel = null;
 
-            // Create cog teeth
-            for (let i = 0; i < 18; i++) {
-                const tooth = document.createElement('div');
-                tooth.className = 'cog-tooth';
-                tooth.style.transform = `rotate(${i * 20}deg) translateY(-150%)`;
-                cog.appendChild(tooth);
-            }
+            // Create option markers around the dial
+            buttons.forEach((button, index) => {
+                const rotation = index * 90;
+                const marker = document.createElement('div');
+                marker.className = 'option-marker';
+                marker.style.transform = `rotate(${rotation}deg) translate(220px) rotate(-${rotation}deg)`;
+                marker.textContent = (index + 1).toString();
+                machineButtons.appendChild(marker);
+            });
 
             // Button click effects
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
                     const rotation = button.dataset.rotation;
                     const panelId = button.dataset.panel + '-panel';
+                    const clickedPanel = document.getElementById(panelId);
 
-                    // Update cog rotation
-                    cog.style.transform = `rotate(${rotation}deg)`;
+                    // If clicking the same button again, toggle the panel
+                    if (clickedPanel === activePanel) {
+                        clickedPanel.classList.remove('active');
+                        button.classList.remove('active');
+                        activePanel = null;
+                        return;
+                    }
+
+                    // Update dial rotation
+                    dial.style.transform = `rotate(${rotation}deg)`;
 
                     // Update button states
                     buttons.forEach(b => b.classList.remove('active'));
@@ -514,8 +692,21 @@
                     panels.forEach(panel => {
                         panel.classList.remove('active');
                     });
-                    document.getElementById(panelId)?.classList.add('active');
+                    clickedPanel.classList.add('active');
+                    activePanel = clickedPanel;
                 });
+            });
+
+            // Close panel when clicking outside
+            document.addEventListener('click', (event) => {
+                const isClickInsidePanel = Array.from(panels).some(panel => panel.contains(event.target));
+                const isClickOnButton = Array.from(buttons).some(button => button.contains(event.target));
+                
+                if (!isClickInsidePanel && !isClickOnButton && activePanel) {
+                    activePanel.classList.remove('active');
+                    buttons.forEach(b => b.classList.remove('active'));
+                    activePanel = null;
+                }
             });
 
             // Initialize theme
