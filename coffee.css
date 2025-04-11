@@ -875,7 +875,7 @@ nav ul li ul li a:hover {
 
 .wave-cover {
     position: absolute;
-    top: 56vh; /* Adjusted slightly higher again */
+    top: 54vh; /* Moved up by 2vh (previously 56vh) */
     left: -18%;
     right: 0;
     height: 300px;
@@ -2120,7 +2120,7 @@ nav ul li ul li a:hover {
     position: fixed;
     top: 1rem;
     left: 1rem;
-    z-index: 1050; /* Above sidebar */
+    z-index: 950; /* Reduced to be below sidebar */
     background: var(--accent-dark);
     color: var(--text-dark);
     border: none;
@@ -2142,7 +2142,19 @@ nav ul li ul li a:hover {
     top: 1rem;
     right: 1rem; /* Position inside sidebar */
     left: auto;
+    z-index: 1050; /* Higher z-index when inside sidebar */
     /* Visibility handled by media query */
+}
+
+.wave-cover {
+    position: absolute;
+    top: 54vh; /* Moved up by 2vh (previously 56vh) */
+    left: -18%;
+    right: 0;
+    height: 300px;
+    background: var(--primary-dark);
+    z-index: 7; /* Increased z-index to be above dividers */
+    /* transform: translateY(-50%); Removed transform */
 }
 
 @media (max-width: 768px) {
@@ -2153,7 +2165,7 @@ nav ul li ul li a:hover {
     .profile-page .main-content,
     .login-page .main-content,
     .lobby-page .main-content {
-        margin-left: 0; 
+        margin-left: 0 !important; /* Added !important for specificity */
     }
 
     .sidebar {
@@ -2207,6 +2219,33 @@ nav ul li ul li a:hover {
         transform: none;
         margin-top: 2rem;
     }
+
+    /* Adjust wave-cover position for mobile */
+    .wave-cover {
+        top: 60vh; /* Move it down on mobile devices */
+    }
+
+    /* Ensure lobbies-container is above mobile nav when nav is closed */
+    .lobbies-container {
+        z-index: 950 !important; /* Above hamburger but below open sidebar */
+    }
+}
+
+/* Ensure sidebar is always above all main content */
+.index-page .sidebar {
+    z-index: 1000;
+}
+
+/* Make sure lobby content is below sidebar for proper layering */
+.index-page .main-content {
+    z-index: 900;
+}
+
+.index-page .lobby-search-container, 
+.index-page .lobby-list,
+.index-page .lobby-item {
+    position: relative;
+    z-index: 900; /* Below sidebar but above other content */
 }
 
 
