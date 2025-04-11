@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chattea - Profile</title>
     <link rel="stylesheet" href="coffee.css">
-    <link rel="icon" href="logo chattea.svg" type="image/svg+xml">
+    <link rel="icon" href="SVG/warmlogo.svg" type="image/svg+xml" id="favicon">
 </head>
 <body class="profile-page">
     <nav class="top-nav">
@@ -201,12 +201,24 @@
             const newTheme = currentTheme === 'iced' ? 'hot' : 'iced';
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            
+            // Update favicon
+            const favicon = document.getElementById('favicon');
+            if (favicon) {
+                favicon.href = newTheme === 'iced' ? 'SVG/coollogo.svg' : 'SVG/warmlogo.svg';
+            }
         }
 
         // Initialize theme from localStorage
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'hot';
             document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Set initial favicon
+            const favicon = document.getElementById('favicon');
+            if (favicon) {
+                favicon.href = savedTheme === 'iced' ? 'SVG/coollogo.svg' : 'SVG/warmlogo.svg';
+            }
         });
     </script>
 </body>

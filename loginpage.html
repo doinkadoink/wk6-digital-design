@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chattea - Login</title>
     <link rel="stylesheet" href="coffee.css">
-    <link rel="icon" href="logo chattea.svg" type="image/svg+xml">
+    <link rel="icon" href="SVG/warmlogo.svg" type="image/svg+xml" id="favicon">
 </head>
 <body class="login-page">
     <div class="page-wrapper">
@@ -81,13 +81,16 @@
             // Toggle cup visibility
             const coffeeCup = document.querySelector('.coffee-cup');
             const icedGlass = document.querySelector('.iced-glass');
+            const favicon = document.getElementById('favicon'); // Get favicon element
             
             if (newTheme === 'iced') {
                 coffeeCup.style.opacity = '0';
                 icedGlass.style.opacity = '1';
+                favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
             } else {
                 coffeeCup.style.opacity = '1';
                 icedGlass.style.opacity = '0';
+                favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
             }
 
             // Set random rotations for ice cubes
@@ -104,13 +107,16 @@
             // Set initial cup visibility based on theme
             const coffeeCup = document.querySelector('.coffee-cup');
             const icedGlass = document.querySelector('.iced-glass');
+            const favicon = document.getElementById('favicon'); // Get favicon element
             
             if (savedTheme === 'iced') {
                 coffeeCup.style.opacity = '0';
                 icedGlass.style.opacity = '1';
+                favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
             } else {
                 coffeeCup.style.opacity = '1';
                 icedGlass.style.opacity = '0';
+                favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
             }
 
             // Initialize ice cube rotations

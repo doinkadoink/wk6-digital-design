@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chattea - Connect Over Coffee</title>
     <link rel="stylesheet" href="coffee.css">
-    <link rel="icon" href="logo chattea.svg" type="image/svg+xml">
+    <link rel="icon" href="SVG/warmlogo.svg" type="image/svg+xml" id="favicon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="index-page">
@@ -135,15 +135,18 @@
             const coffeeCup = document.querySelector('.coffee-cup');
             const icedGlass = document.querySelector('.iced-glass');
             const headerLogo = document.getElementById('header-logo'); // Get header logo element
+            const favicon = document.getElementById('favicon'); // Get favicon element
             
             if (newTheme === 'iced') {
                 coffeeCup.style.opacity = '0';
                 icedGlass.style.opacity = '1';
                 headerLogo.src = 'coollogo.png'; // Set cool logo
+                favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
             } else {
                 coffeeCup.style.opacity = '1';
                 icedGlass.style.opacity = '0';
                 headerLogo.src = 'warmlogo.png'; // Set warm logo
+                favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
             }
 
             // Set random rotations for ice cubes
@@ -161,15 +164,18 @@
             const coffeeCup = document.querySelector('.coffee-cup');
             const icedGlass = document.querySelector('.iced-glass');
             const headerLogo = document.getElementById('header-logo'); // Get header logo element
+            const favicon = document.getElementById('favicon'); // Get favicon element
             
             if (savedTheme === 'iced') {
                 coffeeCup.style.opacity = '0';
                 icedGlass.style.opacity = '1';
                 headerLogo.src = 'coollogo.png'; // Set initial cool logo
+                favicon.href = 'SVG/coollogo.svg'; // Set initial cool favicon
             } else {
                 coffeeCup.style.opacity = '1';
                 icedGlass.style.opacity = '0';
                 headerLogo.src = 'warmlogo.png'; // Set initial warm logo
+                favicon.href = 'SVG/warmlogo.svg'; // Set initial warm favicon
             }
 
             // Initialize ice cube rotations
@@ -209,18 +215,21 @@
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
                 // Manually call parts of toggleTheme needed for color update
-                 const headerLogo = document.getElementById('header-logo');
-                 const coffeeCup = document.querySelector('.theme-toggle .coffee-cup'); // Target toggle specifically
-                 const icedGlass = document.querySelector('.theme-toggle .iced-glass');
-                 if (savedTheme === 'iced') {
-                     if (coffeeCup) coffeeCup.style.opacity = '0';
-                     if (icedGlass) icedGlass.style.opacity = '1';
-                     if (headerLogo) headerLogo.src = 'coollogo.png';
-                 } else {
-                     if (coffeeCup) coffeeCup.style.opacity = '1';
-                     if (icedGlass) icedGlass.style.opacity = '0';
-                     if (headerLogo) headerLogo.src = 'warmlogo.png';
-                 }
+                const headerLogo = document.getElementById('header-logo');
+                const coffeeCup = document.querySelector('.theme-toggle .coffee-cup'); // Target toggle specifically
+                const icedGlass = document.querySelector('.theme-toggle .iced-glass');
+                const favicon = document.getElementById('favicon'); // Get favicon element
+                if (savedTheme === 'iced') {
+                    if (coffeeCup) coffeeCup.style.opacity = '0';
+                    if (icedGlass) icedGlass.style.opacity = '1';
+                    if (headerLogo) headerLogo.src = 'coollogo.png';
+                    if (favicon) favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
+                } else {
+                    if (coffeeCup) coffeeCup.style.opacity = '1';
+                    if (icedGlass) icedGlass.style.opacity = '0';
+                    if (headerLogo) headerLogo.src = 'warmlogo.png';
+                    if (favicon) favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
+                }
             }
         });
 

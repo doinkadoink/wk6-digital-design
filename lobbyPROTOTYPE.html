@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chattea - Gold Coast Coffee Lovers Lobby</title>
     <link rel="stylesheet" href="coffee.css">
-    <link rel="icon" href="logo chattea.svg" type="image/svg+xml">
+    <link rel="icon" href="SVG/warmlogo.svg" type="image/svg+xml" id="favicon">
 </head>
 <body class="lobby-page">
     <div class="container">
@@ -137,13 +137,16 @@
             // Toggle cup visibility only for the theme toggle button
             const themeToggleCup = document.querySelector('.theme-toggle .coffee-cup');
             const themeToggleGlass = document.querySelector('.theme-toggle .iced-glass');
+            const favicon = document.getElementById('favicon'); // Get favicon element
             
             if (newTheme === 'iced') {
                 themeToggleCup.style.opacity = '0';
                 themeToggleGlass.style.opacity = '1';
+                favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
             } else {
                 themeToggleCup.style.opacity = '1';
                 themeToggleGlass.style.opacity = '0';
+                favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
             }
 
             // Set random rotations for ice cubes
@@ -161,13 +164,16 @@
             // Set initial cup visibility based on theme
             const themeToggleCup = document.querySelector('.theme-toggle .coffee-cup');
             const themeToggleGlass = document.querySelector('.theme-toggle .iced-glass');
+            const favicon = document.getElementById('favicon'); // Get favicon element
             
             if (savedTheme === 'iced') {
                 themeToggleCup.style.opacity = '0';
                 themeToggleGlass.style.opacity = '1';
+                favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
             } else {
                 themeToggleCup.style.opacity = '1';
                 themeToggleGlass.style.opacity = '0';
+                favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
             }
 
             // Initialize ice cube rotations
