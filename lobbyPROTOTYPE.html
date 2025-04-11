@@ -10,32 +10,31 @@
 <body class="lobby-page">
     <div class="container">
         <nav class="top-nav">
-            <a href="index.html" class="home-link interactive-element">
-                <div class="coffee-cup">
-                    <div class="steam"></div>
-                </div>
+            <a href="index.html" class="logo-button">
+                <span>Chat</span><span class="tea-highlight">tea</span>
             </a>
+            <h1 class="lobby-title">Southport Lobby</h1>
+            <div class="theme-toggle interactive-element" onclick="toggleTheme()">
+                <div class="coffee-cup" style="opacity: 1;">
+                    <div class="steam"></div>
+                    <div class="steam"></div>
+                    <div class="steam"></div>
+                    <div class="cup">
+                        <div class="handle"></div>
+                    </div>
+                </div>
+                <div class="iced-glass" style="opacity: 0;">
+                    <div class="ice-cube"></div>
+                    <div class="ice-cube"></div>
+                    <div class="ice-cube"></div>
+                </div>
+            </div>
         </nav>
         <div class="lobby-container">
             <div class="lobby-header">
                 <div class="lobby-info">
                     <h2>Gold Coast Coffee Lovers</h2>
                     <span class="active-users">42 active</span>
-                </div>
-                <div class="theme-toggle interactive-element" onclick="toggleTheme()">
-                    <div class="coffee-cup" style="opacity: 1;">
-                        <div class="steam"></div>
-                        <div class="steam"></div>
-                        <div class="steam"></div>
-                        <div class="cup">
-                            <div class="handle"></div>
-                        </div>
-                    </div>
-                    <div class="iced-glass" style="opacity: 0;">
-                        <div class="ice-cube"></div>
-                        <div class="ice-cube"></div>
-                        <div class="ice-cube"></div>
-                    </div>
                 </div>
             </div>
 
@@ -59,7 +58,7 @@
                 </div>
 
                 <div class="chat-content">
-                    <div class="chat-messages">
+                    <div class="chat-messages" id="chat-messages">
                         <div class="message">
                             <div class="user-avatar">J</div>
                             <div class="message-content">
@@ -181,6 +180,12 @@
                 const rotation = Math.random() * 30 - 15;
                 cube.style.setProperty('--rotation', `${rotation}deg`);
             });
+
+            // Auto-scroll to the bottom of the chat
+            const messagesContainer = document.getElementById('chat-messages');
+            if (messagesContainer) {
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
         });
 
         function sendMessage() {
@@ -188,7 +193,7 @@
             const message = input.value.trim();
             
             if (message) {
-                const messagesContainer = document.querySelector('.chat-messages');
+                const messagesContainer = document.getElementById('chat-messages');
                 const newMessage = document.createElement('div');
                 newMessage.className = 'message';
                 newMessage.innerHTML = `
@@ -199,7 +204,10 @@
                     </div>
                 `;
                 messagesContainer.appendChild(newMessage);
+                
+                // Auto-scroll to the bottom of the chat
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
                 input.value = '';
             }
         }

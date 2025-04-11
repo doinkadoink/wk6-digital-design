@@ -320,6 +320,7 @@ nav ul li ul li a:hover {
     width: 60px;
     height: 60px;
     position: relative;
+    margin: 0 auto; /* Additional centering */
 }
 
 .theme-toggle:hover {
@@ -487,6 +488,9 @@ nav ul li ul li a:hover {
 
 .sidebar-top {
     /* Container for theme toggle and nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the theme toggle horizontally */
 }
 
 .logo-container {
@@ -845,8 +849,8 @@ nav ul li ul li a:hover {
 .coffee-divider-back {
     position: absolute;
     top: 45%;
-    left: +30%;
-    right: -30%;
+    left: +30%; /* Restored to original value */
+    right: -30%; /* Restored to original value */
     height: 160px;
     background: var(--primary-dark);
     clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
@@ -855,14 +859,14 @@ nav ul li ul li a:hover {
     animation: 
         dividerRiseBack 1.5s ease-out forwards,
         waveMotion1 8s ease-in-out infinite;
-    animation-delay: 2.5s, 4s; /* Increased second delay to 4s */
+    animation-delay: 2.5s, 4s;
 }
 
 .coffee-divider-back-2 {
     position: absolute;
     top: 45%;
-    left: -50%;
-    right: -30%;
+    left: -50%; /* Restored to original value */
+    right: -30%; /* Restored to original value */
     height: 120px;
     background: var(--primary-dark);
     clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
@@ -871,7 +875,7 @@ nav ul li ul li a:hover {
     animation: 
         dividerRiseBack2 1.5s ease-out forwards,
         waveMotion2 10s ease-in-out infinite;
-    animation-delay: 2.5s, 4s; /* Increased second delay to 4s */
+    animation-delay: 2.5s, 4s;
 }
 
 .wave-cover {
@@ -1942,15 +1946,55 @@ nav ul li ul li a:hover {
 
 /* Lobby specific top nav adjustments if needed */
 .lobby-page .top-nav {
-    background: var(--primary-dark);
-    padding: 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Keep home left, add toggle right? */
-    gap: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: var(--primary-dark);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
+.lobby-page .lobby-title {
+    color: var(--text-dark);
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+    font-family: "Eras Bold ITC", sans-serif;
+}
+
+.lobby-page .chat-messages {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-dark) var(--secondary-dark);
+}
+
+.lobby-page .chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lobby-page .chat-messages::-webkit-scrollbar-track {
+    background: var(--secondary-dark);
+    border-radius: 4px;
+}
+
+.lobby-page .chat-messages::-webkit-scrollbar-thumb {
+    background-color: var(--accent-dark);
+    border-radius: 4px;
+}
+
+.lobby-page .lobby-container {
+    margin-top: 80px; /* Provide space for the fixed top nav */
+    padding: 1rem;
+}
 
 /* === End Styles specific to lobbyPROTOTYPE.html === */
 
@@ -2206,6 +2250,17 @@ nav ul li ul li a:hover {
             var(--primary-dark) 55%,
             var(--primary-dark) 100%
         );
+    }
+
+    /* Adjust coffee divider positions for mobile */
+    .coffee-divider-back {
+        left: -50%; /* Move further left to ensure it covers the edge on mobile */
+        right: 0;
+    }
+    
+    .coffee-divider-back-2 {
+        left: -80%; /* Move further left to ensure it covers the edge on mobile */
+        right: 0;
     }
 }
 
