@@ -280,6 +280,7 @@ nav ul li ul li a:hover {
     transform: scale(1.1);
 }
 
+/* Consolidated Theme Toggle Styles */
 .coffee-cup, .iced-glass {
     position: absolute;
     top: 50%;
@@ -288,12 +289,92 @@ nav ul li ul li a:hover {
     transition: opacity 0.3s ease;
 }
 
+.coffee-cup {
+    width: 40px;
+    height: 50px;
+}
+
+.cup {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--text-dark);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 0 0 3px var(--accent-dark);
+}
+
+.handle {
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    width: 10px;
+    height: 15px;
+    border: 3px solid var(--accent-dark);
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+}
+
+.steam {
+    position: absolute;
+    top: -10px;
+    left: 8px;
+    width: 4px;
+    height: 10px;
+    background-color: var(--text-dark);
+    border-radius: 10px;
+    animation: steaming 2s infinite;
+    opacity: 0.7;
+}
+
+.steam:nth-child(2) {
+    left: 18px;
+    animation-delay: 0.4s;
+}
+
+.steam:nth-child(3) {
+    left: 28px;
+    animation-delay: 0.8s;
+}
+
 .iced-glass {
     width: 40px;
     height: 50px;
     background: var(--text-dark);
     border-radius: 4px;
     border: 2px solid var(--accent-dark);
+    opacity: 0; /* Start hidden */
+}
+
+.ice-cube {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--text-dark);
+    border: 2px solid var(--accent-dark);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+.ice-cube:nth-child(1) {
+    top: 5px;
+    left: 8px;
+    transform: rotate(15deg);
+    animation: float 3s infinite;
+}
+
+.ice-cube:nth-child(2) {
+    top: 8px;
+    right: 8px;
+    transform: rotate(-10deg);
+    animation: float 2.5s infinite 0.5s;
+}
+
+.ice-cube:nth-child(3) {
+    top: 15px;
+    left: 12px;
+    transform: rotate(5deg);
+    animation: float 3.5s infinite 1s;
 }
 
 [data-theme="iced"] .iced-glass {
@@ -304,6 +385,26 @@ nav ul li ul li a:hover {
     opacity: 0;
 }
 
+/* Global Keyframes for Theme Toggle */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(var(--rotation));
+    }
+    50% {
+        transform: translateY(-5px) rotate(var(--rotation));
+    }
+}
+
+@keyframes steaming {
+    0% {
+        transform: translateY(0) scaleX(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-20px) scaleX(3);
+        opacity: 0;
+    }
+}
 
 /* Coffee Divider Styles */
 .main-content {
@@ -315,6 +416,1591 @@ nav ul li ul li a:hover {
         var(--primary-dark) 100%
     );
 }
+
+/* End of original coffee.css */
+
+/* Styles moved from index.html */
+.page-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--primary-dark);
+    padding: 2rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-top {
+    /* Container for theme toggle and nav */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.1);
+}
+
+.logo-container h1 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.logo-container .tea-highlight {
+    background: var(--text-dark);
+    color: var(--primary-dark);
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    display: inline-block;
+    transform: translateY(2px);
+}
+
+.logo-container:hover .steam {
+    animation: steaming 2s infinite;
+}
+
+.logo-container:hover .steam:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.logo-container:hover .steam:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.sidebar-nav {
+    margin-top: 2rem;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar-nav a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    display: block;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-family: "Ellograph CF", serif;  /* Updated font */
+}
+
+.lobby-info h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    font-family: "Eras Bold ITC", sans-serif;  /* Primary font */
+}
+
+.sidebar-nav a:hover {
+    background: var(--secondary-dark);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px var(--accent-dark);
+}
+
+.sidebar-nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.sidebar-nav a:hover::before {
+    left: 100%;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        var(--text-dark) 0%,
+        var(--text-dark) 55%,
+        var(--primary-dark) 55%,
+        var(--primary-dark) 100%
+    );
+    position: relative;
+}
+
+
+.lobbies-container {
+    padding: 2rem;
+    position: relative;
+    z-index: 1001; /* Drastically increased z-index */
+    margin-top: 45vh;
+}
+
+.main-header {
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.main-title {
+    font-size: 3rem;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* Reduced gap as logo is moved */
+    font-family: "Eras Bold ITC", sans-serif;
+}
+
+.header-logo-img {
+    position: absolute; /* Position absolutely within main-content */
+    top: 2rem; /* Align with top padding */
+    left: 2rem; /* Align with left padding */
+    height: 3.5rem;    /* Adjust size as needed */
+    width: auto;
+    z-index: 15; /* Ensure logo is above background but potentially below auth buttons */
+}
+
+.word-box {
+    padding: 0.2em 0.4em;
+    border-radius: 8px;
+    font-family: "Eras Bold ITC", sans-serif;
+}
+
+.chat-box {
+    background-color: var(--chat-box-warm);
+    color: var(--text-dark) !important;
+    font-family: 'Eras Bold ITC' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme="iced"] .chat-box {
+    background-color: var(--chat-box-cool);
+}
+
+.tea-box {
+    background: var(--text-dark);
+    color: var(--primary-dark);
+}
+
+.auth-buttons {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 100;
+}
+
+.auth-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 150px;
+}
+
+.signup-btn {
+    background: var(--accent-dark);
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    min-width: 200px;
+}
+
+.login-btn {
+    background: var(--secondary-dark);
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.guest-btn {
+    background: var(--secondary-dark);
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border: 1px solid var(--accent-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.guest-btn:hover {
+    color: #ff6b6b;
+    background: var(--accent-dark);
+    border-color: #ff6b6b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lobby-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.lobby-item {
+    background: var(--secondary-dark);
+    padding: 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.lobby-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.lobby-capacity {
+    background: var(--accent-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+/* Giant Coffee Animation Styles */
+.giant-coffee-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top: 2rem;
+}
+
+.giant-cup {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 160px;
+    background: var(--accent-dark);
+    border-radius: 0 0 100px 100px;
+    transform-origin: center;
+    transform: translateX(-50%) perspective(500px) rotateX(30deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.giant-coffee {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 160px;
+    height: 80px;
+    background: var(--primary-dark);
+    border-radius: 50%;
+    transform-origin: center;
+    transform: translateX(-50%) perspective(500px) rotateX(30deg);
+    opacity: 0; /* Start invisible */
+    animation: coffeeAppear 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.coffee-stream {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    background: var(--primary-dark);
+    height: 0;
+    animation: pourCoffee 2s ease forwards;
+    animation-delay: 1.5s;
+    z-index: 7;
+}
+
+.coffee-divider {
+    position: absolute;
+    top: 48%;
+    left: -18%;
+    right: 0;
+    height: 240px;
+    background: var(--primary-dark);
+    clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+    transform: translateY(100%);
+    z-index: 6;
+    animation: 
+        dividerRise 1.5s ease-out forwards,
+        waveMotionMain 12s ease-in-out infinite;
+    animation-delay: 2.5s, 3s;
+}
+
+@keyframes waveMotionMain {
+    0% { transform: translateY(0) translateX(5%); }
+    25% { transform: translateY(-8px) translateX(3%); }
+    50% { transform: translateY(0) translateX(0%); }
+    75% { transform: translateY(8px) translateX(3%); }
+    100% { transform: translateY(0) translateX(5%); }
+}
+
+@keyframes dividerRise {
+    0% {
+        transform: translateY(100%);
+        clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+    }
+    100% {
+        transform: translateY(0);
+        clip-path: path('M0,80 C400,80 600,0 800,0 C1000,0 1200,80 1600,80 L1600,160 L0,160 Z');
+    }
+}
+
+.coffee-divider-back {
+    position: absolute;
+    top: 48%;
+    left: +30%;
+    right: -30%;
+    height: 160px;
+    background: var(--secondary-dark);
+    clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+    transform: scaleX(-1) translateY(100%);
+    z-index: 3;
+    animation: 
+        dividerRiseBack 1.5s ease-out forwards,
+        waveMotion1 8s ease-in-out infinite;
+    animation-delay: 2.5s, 3s;
+}
+
+.coffee-divider-back-2 {
+    position: absolute;
+    top: 48%;
+    left: -40%;
+    right: +20%;
+    height: 160px;
+    background: var(--secondary-dark);
+    clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+    transform: scaleX(1) translateY(100%);
+    z-index: 3;
+    animation: 
+        dividerRiseBack2 1.5s ease-out forwards,
+        waveMotion2 10s ease-in-out infinite;
+    animation-delay: 2.5s, 3s;
+}
+
+.wave-cover {
+    position: absolute;
+    top: 60vh; /* Position relative to viewport height, below main animation */
+    left: -18%; /* Keep horizontal positioning */
+    right: 0;
+    height: 300px; /* Keep height */
+    background: var(--primary-dark);
+    z-index: 4;
+    /* transform: translateY(-50%); Removed transform */
+}
+
+@keyframes waveMotion1 {
+    0% { transform: scaleX(-1) translateY(0) translateX(-5%); }
+    25% { transform: scaleX(-1) translateY(-5px) translateX(-8%); }
+    50% { transform: scaleX(-1) translateY(0) translateX(-10%); }
+    75% { transform: scaleX(-1) translateY(5px) translateX(-8%); }
+    100% { transform: scaleX(-1) translateY(0) translateX(-5%); }
+}
+
+@keyframes waveMotion2 {
+    0% { transform: scaleX(1) translateY(0) translateX(5%); }
+    25% { transform: scaleX(1) translateY(5px) translateX(8%); }
+    50% { transform: scaleX(1) translateY(0) translateX(10%); }
+    75% { transform: scaleX(1) translateY(-5px) translateX(8%); }
+    100% { transform: scaleX(1) translateY(0) translateX(5%); }
+}
+
+@keyframes dividerRiseBack {
+    0% {
+        transform: scaleX(-1) translateY(100%) translateX(-5%);
+    }
+    100% {
+        transform: scaleX(-1) translateY(0) translateX(-5%);
+        clip-path: path('M0,80 C400,80 600,0 800,0 C1000,0 1200,80 1600,80 L1600,160 L0,160 Z');
+    }
+}
+
+@keyframes dividerRiseBack2 {
+    0% {
+        transform: scaleX(1) translateY(100%) translateX(5%);
+    }
+    100% {
+        transform: scaleX(1) translateY(0) translateX(5%);
+        clip-path: path('M0,80 C400,80 600,0 800,0 C1000,0 1200,80 1600,80 L1600,160 L0,160 Z');
+    }
+}
+
+@keyframes coffeeAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) perspective(500px) rotateX(30deg) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) perspective(500px) rotateX(30deg) translateY(0);
+    }
+}
+
+@keyframes pourCoffee {
+    0% {
+        height: 0;
+        transform: translateX(-50%) scaleY(0);
+    }
+    100% {
+        height: calc(70vh - 60px);
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+
+/* Theme support for giant coffee */
+[data-theme="iced"] .giant-coffee,
+[data-theme="iced"] .coffee-stream {
+    background: var(--primary-dark);
+}
+
+.wave-animation-container {
+    position: relative; /* Establish positioning context */
+    z-index: 5; /* Keep waves below lobbies */
+    /* Ensure it doesn't block content below - may need width/height adjustments if needed */
+    width: 100%;
+    height: 0; /* Set height to 0 so it doesn't take up layout space */
+    overflow: visible; /* Allow absolutely positioned children to be visible */
+}
+
+/* Styles moved from settingspage.html */
+/* body styles may conflict, using settings-page specific class if needed */
+.settings-page-body {
+    margin: 0;
+    padding: 0;
+    background: var(--primary-dark);
+    font-family: "Eras Bold ITC", sans-serif;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* header styles may conflict, using settings-page specific class if needed */
+.settings-page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    background: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* logo-button styles may conflict, check for redundancy */
+.settings-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+}
+
+.coffee-machine {
+    position: relative;
+    width: 900px;
+    height: 700px;
+    background: var(--accent-dark);
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 -10px 30px rgba(0, 0, 0, 0.2),
+        inset 0 10px 30px rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.machine-screen {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background: var(--text-dark);
+    border-radius: 50%;
+    border: 15px solid var(--primary-dark);
+    box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.2),
+        inset 0 0 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dial-indicator {
+    position: absolute;
+    width: 4px;
+    height: 110px;
+    background: var(--primary-dark);
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dial-indicator::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid var(--accent-dark);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.machine-buttons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.option-marker {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-dark);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    transform-origin: center;
+}
+
+.settings-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.settings-button {
+    position: absolute;
+    background: none;
+    border: none;
+    color: var(--primary-dark);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    font-family: "Eras Bold ITC", sans-serif;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transform-origin: center;
+    text-align: center;
+    width: 200px;
+}
+
+.settings-button[data-rotation="0"] { top: 40px; left: 50%; transform: translateX(-50%); }
+.settings-button[data-rotation="90"] { right: 40px; top: 50%; transform: translateY(-50%); }
+.settings-button[data-rotation="180"] { bottom: 40px; left: 50%; transform: translateX(-50%); }
+.settings-button[data-rotation="270"] { left: 40px; top: 50%; transform: translateY(-50%); }
+
+.settings-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-dark);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.settings-button:hover::after,
+.settings-button.active::after {
+    width: 100%;
+}
+
+.settings-button.active {
+    font-weight: bold;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 50%;
+    right: -350px; /* Start off-screen */
+    transform: translateY(-50%);
+    background: var(--text-dark);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid var(--primary-dark);
+    width: 300px;
+    max-width: 90vw;
+    z-index: 3;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: right 0.3s ease-out;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.settings-panel.active {
+    right: 2rem;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .settings-panel {
+        width: 85vw;
+        padding: 1.5rem;
+    }
+    
+    .settings-panel.active {
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+}
+
+.machine-detail {
+    position: absolute;
+}
+
+.machine-detail.top { top: -20px; left: 50%; transform: translateX(-50%); width: 200px; height: 40px; background: var(--primary-dark); border-radius: 20px 20px 0 0; }
+.machine-detail.bottom { bottom: -30px; left: 50%; transform: translateX(-50%); width: 300px; height: 30px; background: var(--primary-dark); border-radius: 0 0 15px 15px; }
+
+.panel-title {
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.setting-item {
+    margin-bottom: 1rem;
+}
+
+.setting-label {
+    color: var(--primary-dark);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.setting-input {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--secondary-dark);
+    border: 1px solid var(--primary-dark);
+    color: var(--text-dark);
+    border-radius: 5px;
+}
+
+.setting-input::placeholder { color: var(--text-dark); opacity: 0.7; }
+
+.toggle-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--secondary-dark); transition: .4s; border-radius: 34px; }
+.toggle-slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: var(--text-dark); transition: .4s; border-radius: 50%; }
+input:checked + .toggle-slider { background-color: var(--accent-dark); }
+input:checked + .toggle-slider:before { transform: translateX(26px); }
+
+/* Discord contact button styles */
+.discord-contact { display: flex; align-items: center; gap: 0.5rem; background: #5865F2; color: white; padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-size: 1rem; transition: all 0.3s ease; border: none; cursor: pointer; margin-top: 1rem; }
+.discord-contact:hover { background: #4752C4; transform: translateY(-2px); }
+.discord-icon { width: 24px; height: 24px; fill: currentColor; }
+
+
+/* Styles moved from aboutus.html */
+.about-page-body { /* Example specific class if needed */
+    margin: 0;
+    padding: 0;
+    background: var(--primary-dark);
+    font-family: "Eras Bold ITC", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.about-page-header { /* Example specific class if needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    background: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* logo-button may be redundant */
+.about-main-content { /* Example specific class if needed */
+    padding-top: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+}
+
+.about-section { /* Use existing .section or make specific */
+    background: var(--text-dark);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+    color: var(--primary-dark);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.company-info {
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-member {
+    background: var(--secondary-dark);
+    border-radius: 15px;
+    padding: 1.5rem;
+    color: var(--text-dark);
+}
+
+.team-member img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.team-member h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+}
+
+.form-input {
+    padding: 0.8rem;
+    border: 2px solid var(--primary-dark);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--secondary-dark);
+    color: var(--text-dark);
+}
+
+.form-input::placeholder { color: var(--text-dark); opacity: 0.7; }
+textarea.form-input { min-height: 150px; resize: vertical; }
+.submit-button { background: var(--primary-dark); color: var(--text-dark); border: none; padding: 1rem 2rem; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; }
+.submit-button:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+.discord-option { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--primary-dark); }
+/* .discord-contact may be redundant */
+/* .discord-icon may be redundant */
+@media (max-width: 768px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .about-section { margin: 1rem; padding: 1.5rem; }
+}
+
+
+/* Styles moved from loginpage.html */
+.login-page-body { /* Example specific class */
+    margin: 0;
+    padding: 0;
+    background: var(--primary-dark);
+    font-family: "Eras Bold ITC", sans-serif;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 80px; /* Space for fixed header */
+}
+
+.login-page-header { /* Example specific class */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    background: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* logo-button redundant? */
+/* theme-toggle redundant? */
+/* coffee-cup, steam, cup, handle redundant? */
+/* iced-glass, ice-cube redundant? */
+/* steaming, float keyframes redundant? */
+
+.login-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.login-circle {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    background: var(--text-dark);
+    border-radius: 50%;
+    border: 15px solid var(--accent-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    margin-bottom: 2rem;
+}
+
+.login-circle::after {
+    content: '';
+    position: absolute;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 160px;
+    border: 15px solid var(--accent-dark);
+    border-left: none;
+    border-radius: 0 80px 80px 0;
+}
+
+.login-form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+/* .form-group may conflict, check context */
+/* .form-input may conflict, check context */
+.auth-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
+    align-items: center;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background: var(--text-dark);
+    color: var(--primary-dark);
+}
+
+/* login-btn, signup-btn might be better defined globally if consistent */
+.login-btn { background: var(--text-dark); color: var(--primary-dark); }
+.signup-btn { background: var(--text-dark); color: var(--primary-dark); }
+
+.auth-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+.guest-option { margin-top: 1rem; text-align: center; }
+.guest-text { color: var(--text-dark); font-size: 0.8rem; margin-bottom: 0.5rem; }
+.guest-btn { background: transparent; color: var(--text-dark); border: 1px solid var(--text-dark); padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-size: 0.8rem; opacity: 0.7; }
+.guest-btn:hover { opacity: 1; background: var(--text-dark); color: var(--primary-dark); }
+.signup-section { background: var(--text-dark); padding: 2rem; border-radius: 25px; width: 80%; margin-top: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+.signup-section .form-group { margin-bottom: 1rem; }
+.coffee-content { width: 80%; height: 80%; background: var(--primary-dark); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+
+/* Styles moved from lobbyPROTOTYPE.html */
+.lobby-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: var(--primary-dark);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.lobby-header {
+    background: var(--secondary-dark);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lobby-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.active-users {
+    background: var(--accent-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.chat-container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    height: 70vh;
+    position: relative;
+}
+
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.users-list {
+    background: var(--secondary-dark);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.user-item:hover {
+    background: var(--accent-dark);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-messages {
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1;
+}
+
+.message {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.message-content {
+    background: var(--secondary-dark);
+    padding: 0.8rem;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.message-meta {
+    font-size: 0.8rem;
+    color: var(--text-dark);
+    opacity: 0.7;
+    margin-top: 0.3rem;
+}
+
+.chat-input {
+    padding: 1rem;
+    background: var(--secondary-dark);
+    display: flex;
+    gap: 1rem;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary-dark);
+    color: var(--text-dark);
+}
+
+.chat-input button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--accent-dark);
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.chat-input button:hover {
+    transform: scale(1.05);
+}
+
+.coffee-preference {
+    font-size: 0.8rem;
+    color: var(--accent-dark);
+}
+
+.top-nav {
+    background: var(--primary-dark);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* home-link redundant? */
+/* coffee-cup, steam redundant? */
+
+
+/* Styles moved from profilepage.html */
+.profile-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.profile-header {
+    background: var(--primary-dark);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: var(--accent-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--text-dark);
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile-name {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* .coffee-preference may be defined differently */
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--secondary-dark);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.bio-section {
+    background: var(--primary-dark);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.favorite-cafes {
+    background: var(--primary-dark);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.cafe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cafe-item {
+    background: var(--secondary-dark);
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cafe-icon {
+    font-size: 1.5rem;
+}
+
+/* Scoped top-nav for profile page */
+.profile-page .top-nav {
+    background: var(--primary-dark);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+/* Remove fixed positioning rule for theme-toggle that might exist from profile page merge */
+/* Ensure the global .theme-toggle rule is sufficient */
+
+/* Scoped home-link styles if needed, but global might suffice */
+.profile-page .home-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-page .home-link .coffee-cup {
+    width: 24px;
+    height: 30px;
+}
+
+.coffee-quiz, .recent-activity, .achievements, .coffee-recipes {
+    background: var(--primary-dark);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.quiz-results {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.quiz-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--secondary-dark);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.badge-icon {
+    font-size: 2rem;
+}
+
+.retake-quiz {
+    background: var(--accent-dark);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: var(--text-dark);
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.activity-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--secondary-dark);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.activity-time {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.achievement-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--secondary-dark);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.recipe-card {
+    background: var(--secondary-dark);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+/* === Styles specific to index.html === */
+
+.index-page .page-container {
+    /* If this structure is unique to index */
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Scoped main content background for index */
+.index-page .main-content {
+    flex: 1; 
+    margin-left: 250px; 
+    min-height: 100vh; 
+    position: relative; 
+    overflow-x: hidden; /* Re-added to hide horizontal overflow from waves */
+    background: linear-gradient(
+        to bottom,
+        var(--text-dark) 0%,
+        var(--text-dark) 55%,
+        var(--primary-dark) 55%,
+        var(--primary-dark) 100%
+    );
+}
+
+/* Scoped lobby container specific styles */
+.index-page .lobbies-container {
+    padding: 2rem;
+    position: relative;
+    z-index: 1001; /* Keep high for index page */
+    margin-top: 45vh;
+}
+
+/* Scoped header logo positioning */
+.index-page .header-logo-img {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    height: 3.5rem;
+    width: auto;
+    z-index: 15;
+}
+
+/* Giant Coffee Animation Styles (Scoped) */
+.index-page .giant-coffee-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top: 2rem;
+}
+
+.index-page .giant-cup {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 160px;
+    background: var(--accent-dark);
+    border-radius: 0 0 100px 100px;
+    transform-origin: center;
+    transform: translateX(-50%) perspective(500px) rotateX(30deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.index-page .giant-coffee {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 160px;
+    height: 80px;
+    background: var(--primary-dark);
+    border-radius: 50%;
+    transform-origin: center;
+    transform: translateX(-50%) perspective(500px) rotateX(30deg);
+    opacity: 0;
+    animation: coffeeAppear 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.index-page .coffee-stream {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    background: var(--primary-dark);
+    height: 0;
+    animation: pourCoffee 2s ease forwards;
+    animation-delay: 1.5s;
+    z-index: 7;
+}
+
+/* Wave Animation Container (Scoped) */
+.index-page .wave-animation-container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 0;
+    overflow: visible; /* Reverted back to visible to allow children */
+}
+
+/* Wave Divider Styles (Scoped) */
+.index-page .coffee-divider {
+    position: absolute;
+    top: 48%;
+    left: -18%;
+    right: 0;
+    height: 240px;
+    background: var(--primary-dark);
+    clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+    transform: translateY(100%);
+    z-index: 6;
+    animation: 
+        dividerRise 1.5s ease-out forwards,
+        waveMotionMain 12s ease-in-out infinite;
+    animation-delay: 2.5s, 3s;
+}
+
+.index-page .coffee-divider-back {
+    position: absolute;
+    top: 48%;
+    left: +30%;
+    right: -30%;
+    height: 160px;
+    background: var(--secondary-dark);
+    clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+    transform: scaleX(-1) translateY(100%);
+    z-index: 3;
+    animation: 
+        dividerRiseBack 1.5s ease-out forwards,
+        waveMotion1 8s ease-in-out infinite;
+    animation-delay: 2.5s, 3s;
+}
+
+.index-page .coffee-divider-back-2 {
+    position: absolute;
+    top: 48%;
+    left: -40%;
+    right: +20%;
+    height: 160px;
+    background: var(--secondary-dark);
+    clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
+    transform: scaleX(1) translateY(100%);
+    z-index: 3;
+    animation: 
+        dividerRiseBack2 1.5s ease-out forwards,
+        waveMotion2 10s ease-in-out infinite;
+    animation-delay: 2.5s, 3s;
+}
+
+/* Keyframes should be global, ensure they are defined once, outside the scope */
+/* Example: @keyframes coffeeAppear { ... } */
+/* Example: @keyframes pourCoffee { ... } */
+/* Example: @keyframes waveMotionMain { ... } */
+/* Example: @keyframes dividerRise { ... } */
+/* Example: @keyframes waveMotion1 { ... } */
+/* Example: @keyframes waveMotion2 { ... } */
+/* Example: @keyframes dividerRiseBack { ... } */
+/* Example: @keyframes dividerRiseBack2 { ... } */
+
+/* NOTE: The .wave-cover style was adjusted globally earlier */
+
+/* === Scoped Auth Buttons for index.html === */
+
+.index-page .auth-buttons {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 100; /* Ensure they are above most elements */
+}
+
+/* Generic button style for index - ensure no conflict with global .auth-button if it exists */
+.index-page .auth-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 150px;
+    /* Add specific background/color if needed, or ensure global is correct */
+}
+
+.index-page .signup-btn {
+    background: var(--accent-dark);
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    min-width: 200px;
+}
+
+.index-page .login-btn {
+    background: var(--secondary-dark);
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.index-page .guest-btn {
+    background: var(--secondary-dark);
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border: 1px solid var(--accent-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.index-page .guest-btn:hover {
+    color: #ff6b6b;
+    background: var(--accent-dark);
+    border-color: #ff6b6b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+}
+
+.index-page .auth-button:hover {
+    /* General hover effect - may conflict if global exists */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* === End Styles specific to index.html === */
 
 
 
