@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# css rule content
+
+
+
+- Always place css code into [coffee.css](mdc:coffee.css), ensuring there are no duplicate elements and that there are no conflictions with any other elements. Check for pre-existing elements that may be useful or relevant before making another, ensuring you have them labelled according to which pages they are used in. 
