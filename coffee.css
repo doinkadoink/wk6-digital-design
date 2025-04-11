@@ -875,7 +875,7 @@ nav ul li ul li a:hover {
 
 .wave-cover {
     position: absolute;
-    top: 58vh; /* Adjusted slightly higher */
+    top: 56vh; /* Adjusted slightly higher again */
     left: -18%;
     right: 0;
     height: 300px;
@@ -2147,7 +2147,12 @@ nav ul li ul li a:hover {
 
 @media (max-width: 768px) {
     /* Adjust main content margin when sidebar is potentially hidden */
-    .main-content {
+    .index-page .main-content, 
+    .settings-page .main-content, /* Add other page classes as needed */
+    .about-page .main-content,
+    .profile-page .main-content,
+    .login-page .main-content,
+    .lobby-page .main-content {
         margin-left: 0; 
     }
 
@@ -2168,11 +2173,14 @@ nav ul li ul li a:hover {
 
     .mobile-nav-toggle {
         display: block; /* Show hamburger */
+        left: 1.5rem; /* Nudge slightly right */
     }
 
     .mobile-nav-toggle.sidebar-close {
        /* Ensure close button is visible inside sidebar */
        display: block; 
+       right: 1rem; /* Confirm position inside */
+       left: auto;
     }
     
     /* Hide logo in header on mobile if sidebar is collapsed */
