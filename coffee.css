@@ -610,12 +610,17 @@ nav ul li ul li a:hover {
     position: relative;
     z-index: 1001; /* Drastically increased z-index */
     margin-top: 45vh;
+    max-width: 800px; /* Added max-width */
+    margin-left: auto;  /* Center the container */
+    margin-right: auto;
 }
 
 .main-header {
     padding: 2rem;
     text-align: center;
     margin-bottom: 2rem;
+    position: relative; /* Needed for z-index */
+    z-index: 2; /* Above bean rain */
 }
 
 .main-title {
@@ -870,12 +875,12 @@ nav ul li ul li a:hover {
 
 .wave-cover {
     position: absolute;
-    top: 60vh; /* Position relative to viewport height, below main animation */
-    left: -18%; /* Keep horizontal positioning */
+    top: 58vh; /* Adjusted slightly higher */
+    left: -18%;
     right: 0;
-    height: 300px; /* Keep height */
+    height: 300px;
     background: var(--primary-dark);
-    z-index: 4;
+    z-index: 7; /* Increased z-index to be above dividers */
     /* transform: translateY(-50%); Removed transform */
 }
 
@@ -1353,6 +1358,7 @@ nav ul li ul li a:hover {
 /* Apply overflow-x hidden specifically to index page html root */
 .index-html-root {
     overflow-x: hidden;
+    width: 100%; /* Ensure html root takes full width */
 }
 
 /* Apply overflow-x hidden specifically to index page body */
@@ -1978,40 +1984,37 @@ nav ul li ul li a:hover {
     overflow: hidden; /* Hide pseudo-element overflow */
 }
 
-/* Create split using two overlapping pseudo-elements */
-.coffee-bean::before, 
-.coffee-bean::after {
+/* Use ::before for the vertical split line */
+.coffee-bean::before {
     content: '';
     position: absolute;
-    top: 0;
-    width: 55%; /* Slightly more than half to overlap */
-    height: 100%;
-    background-color: inherit; /* Use parent color */
-    border-radius: 50% / 50%;
+    top: 10%; /* Start slightly below top */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.5px; /* Line thickness */
+    height: 80%; /* Adjust length */
+    background-color: var(--text-dark); /* Light color */
+    border-radius: 1px; /* Slightly rounded ends */
+    opacity: 0.6; /* Make it slightly subtle */
+    /* Remove previous shape styles if any */
+    /* clip-path: none; */
+    /* width: auto; */
+    /* border-radius: 0; */
 }
 
-.coffee-bean::before {
-    left: 0;
-    /* Create slightly wavy edge (example using clip-path) */
-    clip-path: path('M0,0 C10,10 10,22 0,32 L0,0 Z'); /* Adjust curve as needed */
-}
-
-.coffee-bean::after {
-    right: 0;
-     /* Mirror the clip-path (adjust values) */
-    clip-path: path('M11,0 C1,10 1,22 11,32 L11,0 Z'); /* Adjust curve as needed */ 
-}
+/* Remove the ::after pseudo-element used for the other half */
+/* .coffee-bean::after { ... } */
 
 @keyframes rain {
     0% {
-        transform: translateY(-50px); /* Start above screen */
+        transform: translateY(-50px) rotate(0deg); /* Start rotation */
         opacity: 0.7;
     }
     90% {
          opacity: 0.7;
     }
     100% {
-        transform: translateY(100vh); /* Fall down below viewport */
+        transform: translateY(100vh) rotate(720deg); /* End rotation */
         opacity: 0;
     }
 }
@@ -2058,6 +2061,144 @@ nav ul li ul li a:hover {
     width: 100%;
     height: 100%;
     /* Google Maps JS will target this div */
+}
+
+/* Scoped lobby container specific styles */
+.index-page .lobbies-container {
+    padding: 2rem;
+    position: relative;
+    z-index: 1001; 
+    margin-top: 45vh;
+    max-width: 800px; /* Added max-width */
+    margin-left: auto;  /* Center the container */
+    margin-right: auto;
+}
+
+/* New styles for lobby search */
+.index-page .lobby-search-container {
+    margin-bottom: 1.5rem; /* Space below search bar */
+    width: 100%;
+}
+
+.index-page .lobby-search-input {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--secondary-dark);
+    border-radius: 25px; /* Match auth buttons */
+    background-color: var(--text-dark);
+    color: var(--primary-dark);
+    font-size: 1rem;
+    font-family: "Ellograph CF", serif;
+    outline: none;
+}
+
+.index-page .lobby-search-input::placeholder {
+    color: var(--primary-dark);
+    opacity: 0.7;
+}
+
+/* Scoped main content background for index */
+.index-page .main-content {
+    flex: 1;
+    margin-left: 250px;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden; /* Re-apply overflow hidden to clip waves directly */
+    background: linear-gradient(
+        to bottom,
+        var(--text-dark) 0%,
+        var(--text-dark) 55%,
+        var(--primary-dark) 55%,
+        var(--primary-dark) 100%
+    );
+}
+
+/* === Mobile Navigation Styles === */
+
+.mobile-nav-toggle {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1050; /* Above sidebar */
+    background: var(--accent-dark);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-toggle:hover {
+    transform: scale(1.1);
+}
+
+.mobile-nav-toggle.sidebar-close {
+    position: absolute; /* Position relative to sidebar */
+    top: 1rem;
+    right: 1rem; /* Position inside sidebar */
+    left: auto;
+    /* Visibility handled by media query */
+}
+
+@media (max-width: 768px) {
+    /* Adjust main content margin when sidebar is potentially hidden */
+    .main-content {
+        margin-left: 0; 
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000; /* Ensure it's above content */
+        width: 250px; /* Keep width */
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* Show hamburger */
+    }
+
+    .mobile-nav-toggle.sidebar-close {
+       /* Ensure close button is visible inside sidebar */
+       display: block; 
+    }
+    
+    /* Hide logo in header on mobile if sidebar is collapsed */
+    .index-page .header-logo-img {
+        left: 65px; /* Adjust position based on hamburger button */
+    }
+    
+    /* Adjust map position slightly on mobile if needed */
+    .index-page #map-placeholder-container {
+        /* Example: reduce width or margin */
+        width: calc(100% - 4rem); /* Example: make it responsive */
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+    
+    .index-page .header-content-wrapper {
+       flex-direction: column; /* Stack coffee and map on mobile */
+       align-items: center;
+    }
+    
+    .index-page .giant-coffee-container {
+        position: relative; /* Revert to relative for stacking */
+        left: auto;
+        transform: none;
+        margin-top: 2rem;
+    }
 }
 
 
