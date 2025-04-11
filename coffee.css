@@ -296,7 +296,7 @@ nav ul li ul li a:hover {
     border-radius: 3px;
 }
 
-.logo { 
+.logo {
     /* Remove or adjust - conflicts with logo-button */
     /* height: 50px; margin-right: 20px; */
 }
@@ -1953,6 +1953,112 @@ nav ul li ul li a:hover {
 
 
 /* === End Styles specific to lobbyPROTOTYPE.html === */
+
+/* New styles for bean rain animation */
+.bean-rain-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Cover the full viewport height initially */
+    z-index: 1; /* Behind most content, above body background */
+    pointer-events: none; /* Don't interfere with clicks */
+    overflow: hidden; /* Contain beans within this layer */
+}
+
+.coffee-bean {
+    position: absolute;
+    width: 20px; /* Doubled size */
+    height: 32px; /* Doubled size */
+    background-color: var(--primary-dark); 
+    border-radius: 50% / 50%; /* More rounded */
+    box-shadow: inset -3px -4px 5px rgba(0,0,0,0.3); /* Slightly adjusted shadow */
+    opacity: 0.7;
+    animation: rain 10s linear infinite;
+    overflow: hidden; /* Hide pseudo-element overflow */
+}
+
+/* Create split using two overlapping pseudo-elements */
+.coffee-bean::before, 
+.coffee-bean::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 55%; /* Slightly more than half to overlap */
+    height: 100%;
+    background-color: inherit; /* Use parent color */
+    border-radius: 50% / 50%;
+}
+
+.coffee-bean::before {
+    left: 0;
+    /* Create slightly wavy edge (example using clip-path) */
+    clip-path: path('M0,0 C10,10 10,22 0,32 L0,0 Z'); /* Adjust curve as needed */
+}
+
+.coffee-bean::after {
+    right: 0;
+     /* Mirror the clip-path (adjust values) */
+    clip-path: path('M11,0 C1,10 1,22 11,32 L11,0 Z'); /* Adjust curve as needed */ 
+}
+
+@keyframes rain {
+    0% {
+        transform: translateY(-50px); /* Start above screen */
+        opacity: 0.7;
+    }
+    90% {
+         opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh); /* Fall down below viewport */
+        opacity: 0;
+    }
+}
+
+/* Styles for header content wrapper and map placeholder */
+.index-page .header-content-wrapper {
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 2rem; 
+    margin-top: 2rem;
+    position: relative; /* Needed for absolute positioning of children */
+    min-height: 350px; /* Ensure wrapper has height for positioning */
+}
+
+/* Giant Coffee Animation Styles (Scoped) */
+.index-page .giant-coffee-container {
+    position: absolute; /* Position absolutely within the wrapper */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Fine-tune centering */
+    width: 200px; /* Explicit width based on giant-cup */
+    height: 300px;
+    margin-top: 0; /* Reset margin-top */
+    z-index: 6; /* Above beans/waves, below map potentially */
+}
+
+.index-page #map-placeholder-container {
+    width: 400px; 
+    height: 300px; 
+    border: 5px solid var(--text-dark); 
+    border-radius: 10px;
+    background-color: var(--secondary-dark); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-dark);
+    font-style: italic;
+    z-index: 7; /* Ensure map is above coffee animation if they overlap */
+    /* We might need margin or different positioning if flex doesn't work well with absolute coffee */
+    margin-left: calc(50% + 100px + 1rem); /* Push map past centered coffee (50% + half coffee width + gap/2) */
+}
+
+.index-page #map {
+    width: 100%;
+    height: 100%;
+    /* Google Maps JS will target this div */
+}
 
 
 

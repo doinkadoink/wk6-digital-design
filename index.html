@@ -38,6 +38,8 @@
         </aside>
 
         <main class="main-content">
+            <div class="bean-rain-container" id="bean-container"></div>
+            
             <img id="header-logo" src="warmlogo.png" alt="Chattea Logo" class="header-logo-img">
 
             <div class="main-header">
@@ -45,10 +47,27 @@
                     <span class="word-box chat-box">Chat</span>
                     <span class="word-box tea-box">tea</span>
                 </h1>
-                <div class="giant-coffee-container">
-                    <div class="giant-cup">
-                        <div class="giant-coffee"></div>
-                        <div class="coffee-stream"></div>
+                <!-- Wrapper for coffee animation and map -->
+                <div class="header-content-wrapper">
+                    <div class="giant-coffee-container">
+                        <div class="giant-cup">
+                            <div class="giant-coffee"></div>
+                            <div class="coffee-stream"></div>
+                        </div>
+                    </div>
+                    <!-- Map Placeholder -->
+                    <div id="map-placeholder-container">
+                        <iframe 
+                            id="map"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; border-radius: 5px;" 
+                            loading="lazy" 
+                            allowfullscreen 
+                            referrerpolicy="no-referrer-when-downgrade" 
+                            src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Gold+Coast+Australia">
+                        </iframe>
+                        <!-- Future JavaScript will initialize Google Map here -->
                     </div>
                 </div>
             </div>
@@ -88,7 +107,7 @@
                     </a>
                 </div>
             </div>
-    </main>
+        </main>
     </div>
 
     <script>
@@ -144,6 +163,51 @@
                 const rotation = Math.random() * 30 - 15;
                 cube.style.setProperty('--rotation', `${rotation}deg`);
             });
+        });
+
+        // Bean Rain Animation Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const beanContainer = document.getElementById('bean-container');
+            const numberOfBeans = 50; // Adjust density as needed
+
+            for (let i = 0; i < numberOfBeans; i++) {
+                const bean = document.createElement('div');
+                bean.classList.add('coffee-bean');
+                
+                // Random horizontal position
+                bean.style.left = `${Math.random() * 100}vw`;
+                
+                // Random animation delay and duration variation
+                const duration = Math.random() * 5 + 8; // Between 8 and 13 seconds
+                const delay = Math.random() * 10; // Stagger start times
+                bean.style.animationDuration = `${duration}s`;
+                bean.style.animationDelay = `-${delay}s`; // Negative delay starts partway through
+                
+                // Random size variation
+                const scale = Math.random() * 0.6 + 0.7; // Between 0.7 and 1.3 scale
+                bean.style.transform = `scale(${scale})`;
+                
+                beanContainer.appendChild(bean);
+            }
+            
+            // Re-trigger theme function AFTER beans are created to apply correct color
+            const savedTheme = localStorage.getItem('theme') || 'hot';
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                // Manually call parts of toggleTheme needed for color update
+                 const headerLogo = document.getElementById('header-logo');
+                 const coffeeCup = document.querySelector('.theme-toggle .coffee-cup'); // Target toggle specifically
+                 const icedGlass = document.querySelector('.theme-toggle .iced-glass');
+                 if (savedTheme === 'iced') {
+                     if (coffeeCup) coffeeCup.style.opacity = '0';
+                     if (icedGlass) icedGlass.style.opacity = '1';
+                     if (headerLogo) headerLogo.src = 'coollogo.png';
+                 } else {
+                     if (coffeeCup) coffeeCup.style.opacity = '1';
+                     if (icedGlass) icedGlass.style.opacity = '0';
+                     if (headerLogo) headerLogo.src = 'warmlogo.png';
+                 }
+            }
         });
     </script>
 </body>
