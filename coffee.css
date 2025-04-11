@@ -594,24 +594,25 @@ nav ul li ul li a:hover {
     flex: 1;
     margin-left: 250px;
     min-height: 100vh;
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(
         to bottom,
         var(--text-dark) 0%,
-        var(--text-dark) 55%,
-        var(--primary-dark) 55%,
+        var(--text-dark) 45%, /* Lowered even further to 45% for desktop */
+        var(--primary-dark) 45%,
         var(--primary-dark) 100%
     );
-    position: relative;
+    padding-bottom: 50vh; /* Keep extra padding at bottom */
 }
 
 
 .lobbies-container {
-    padding: 2rem;
     position: relative;
-    z-index: 1001; /* Drastically increased z-index */
-    margin-top: 45vh;
-    max-width: 800px; /* Added max-width */
-    margin-left: auto;  /* Center the container */
+    z-index: 10; /* Higher than wave dividers */
+    margin-top: 40vh; /* Reduced from 45vh to match new gradient position */
+    max-width: 800px;
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -671,7 +672,7 @@ nav ul li ul li a:hover {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    z-index: 100;
+    z-index: 1500; /* Increased to be above absolutely everything */
 }
 
 .auth-button {
@@ -808,7 +809,7 @@ nav ul li ul li a:hover {
 
 .coffee-divider {
     position: absolute;
-    top: 48%;
+    top: 45%;
     left: -18%;
     right: 0;
     height: 240px;
@@ -819,15 +820,15 @@ nav ul li ul li a:hover {
     animation: 
         dividerRise 1.5s ease-out forwards,
         waveMotionMain 12s ease-in-out infinite;
-    animation-delay: 2.5s, 3s;
+    animation-delay: 2.5s, 4s; /* Increased second delay to 4s to ensure first animation completes */
 }
 
 @keyframes waveMotionMain {
-    0% { transform: translateY(0) translateX(5%); }
+    0% { transform: translateY(0) translateX(0%); }
     25% { transform: translateY(-8px) translateX(3%); }
-    50% { transform: translateY(0) translateX(0%); }
+    50% { transform: translateY(0) translateX(5%); }
     75% { transform: translateY(8px) translateX(3%); }
-    100% { transform: translateY(0) translateX(5%); }
+    100% { transform: translateY(0) translateX(0%); }
 }
 
 @keyframes dividerRise {
@@ -843,79 +844,81 @@ nav ul li ul li a:hover {
 
 .coffee-divider-back {
     position: absolute;
-    top: 48%;
+    top: 45%;
     left: +30%;
     right: -30%;
     height: 160px;
-    background: var(--secondary-dark);
+    background: var(--primary-dark);
     clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
     transform: scaleX(-1) translateY(100%);
-    z-index: 3;
+    z-index: 5;
     animation: 
         dividerRiseBack 1.5s ease-out forwards,
         waveMotion1 8s ease-in-out infinite;
-    animation-delay: 2.5s, 3s;
+    animation-delay: 2.5s, 4s; /* Increased second delay to 4s */
 }
 
 .coffee-divider-back-2 {
     position: absolute;
-    top: 48%;
-    left: -40%;
-    right: +20%;
-    height: 160px;
-    background: var(--secondary-dark);
+    top: 45%;
+    left: -50%;
+    right: -30%;
+    height: 120px;
+    background: var(--primary-dark);
     clip-path: path('M0,160 C400,160 600,160 800,160 C1000,160 1200,160 1600,160 L1600,160 L0,160 Z');
-    transform: scaleX(1) translateY(100%);
-    z-index: 3;
+    transform: translateY(100%);
+    z-index: 4;
     animation: 
         dividerRiseBack2 1.5s ease-out forwards,
         waveMotion2 10s ease-in-out infinite;
-    animation-delay: 2.5s, 3s;
+    animation-delay: 2.5s, 4s; /* Increased second delay to 4s */
 }
 
 .wave-cover {
-    position: absolute;
-    top: 54vh; /* Moved up by 2vh (previously 56vh) */
-    left: -18%;
-    right: 0;
-    height: 300px;
-    background: var(--primary-dark);
-    z-index: 7; /* Increased z-index to be above dividers */
-    /* transform: translateY(-50%); Removed transform */
+    display: none; /* Hide it entirely */
+}
+
+.wave-animation-container {
+    position: relative;
+    width: 100%;
+    z-index: 6; /* Higher z-index to ensure visibility */
+    overflow: visible;
+    height: 0;
+    pointer-events: none; /* Ensure it doesn't block interaction with elements below */
 }
 
 @keyframes waveMotion1 {
-    0% { transform: scaleX(-1) translateY(0) translateX(-5%); }
-    25% { transform: scaleX(-1) translateY(-5px) translateX(-8%); }
+    0% { transform: scaleX(-1) translateY(0) translateX(0%); }
+    25% { transform: scaleX(-1) translateY(-5px) translateX(-5%); }
     50% { transform: scaleX(-1) translateY(0) translateX(-10%); }
-    75% { transform: scaleX(-1) translateY(5px) translateX(-8%); }
-    100% { transform: scaleX(-1) translateY(0) translateX(-5%); }
+    75% { transform: scaleX(-1) translateY(5px) translateX(-5%); }
+    100% { transform: scaleX(-1) translateY(0) translateX(0%); }
 }
 
 @keyframes waveMotion2 {
-    0% { transform: scaleX(1) translateY(0) translateX(5%); }
-    25% { transform: scaleX(1) translateY(5px) translateX(8%); }
-    50% { transform: scaleX(1) translateY(0) translateX(10%); }
-    75% { transform: scaleX(1) translateY(-5px) translateX(8%); }
-    100% { transform: scaleX(1) translateY(0) translateX(5%); }
+    0% { transform: translateY(0) translateX(0%); }
+    25% { transform: translateY(5px) translateX(5%); }
+    50% { transform: translateY(0) translateX(10%); }
+    75% { transform: translateY(-5px) translateX(5%); }
+    100% { transform: translateY(0) translateX(0%); }
 }
 
 @keyframes dividerRiseBack {
     0% {
-        transform: scaleX(-1) translateY(100%) translateX(-5%);
+        transform: scaleX(-1) translateY(100%);
     }
     100% {
-        transform: scaleX(-1) translateY(0) translateX(-5%);
+        transform: scaleX(-1) translateY(0);
         clip-path: path('M0,80 C400,80 600,0 800,0 C1000,0 1200,80 1600,80 L1600,160 L0,160 Z');
     }
 }
 
 @keyframes dividerRiseBack2 {
     0% {
-        transform: scaleX(1) translateY(100%) translateX(5%);
+        transform: translateY(100%);
     }
     100% {
-        transform: scaleX(1) translateY(0) translateX(5%);
+        transform: translateY(0);
         clip-path: path('M0,80 C400,80 600,0 800,0 C1000,0 1200,80 1600,80 L1600,160 L0,160 Z');
     }
 }
@@ -946,15 +949,6 @@ nav ul li ul li a:hover {
 [data-theme="iced"] .giant-coffee,
 [data-theme="iced"] .coffee-stream {
     background: var(--primary-dark);
-}
-
-.wave-animation-container {
-    position: relative; /* Establish positioning context */
-    z-index: 5; /* Keep waves below lobbies */
-    /* Ensure it doesn't block content below - may need width/height adjustments if needed */
-    width: 100%;
-    height: 0; /* Set height to 0 so it doesn't take up layout space */
-    overflow: visible; /* Allow absolutely positioned children to be visible */
 }
 
 /* Styles moved from settingspage.html */
@@ -2097,22 +2091,6 @@ nav ul li ul li a:hover {
     opacity: 0.7;
 }
 
-/* Scoped main content background for index */
-.index-page .main-content {
-    flex: 1;
-    margin-left: 250px;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden; /* Re-apply overflow hidden to clip waves directly */
-    background: linear-gradient(
-        to bottom,
-        var(--text-dark) 0%,
-        var(--text-dark) 55%,
-        var(--primary-dark) 55%,
-        var(--primary-dark) 100%
-    );
-}
-
 /* === Mobile Navigation Styles === */
 
 .mobile-nav-toggle {
@@ -2144,17 +2122,6 @@ nav ul li ul li a:hover {
     left: auto;
     z-index: 1050; /* Higher z-index when inside sidebar */
     /* Visibility handled by media query */
-}
-
-.wave-cover {
-    position: absolute;
-    top: 54vh; /* Moved up by 2vh (previously 56vh) */
-    left: -18%;
-    right: 0;
-    height: 300px;
-    background: var(--primary-dark);
-    z-index: 7; /* Increased z-index to be above dividers */
-    /* transform: translateY(-50%); Removed transform */
 }
 
 @media (max-width: 768px) {
@@ -2220,14 +2187,25 @@ nav ul li ul li a:hover {
         margin-top: 2rem;
     }
 
-    /* Adjust wave-cover position for mobile */
+    /* Remove specific wave-cover mobile adjustments since we've hidden it */
     .wave-cover {
-        top: 60vh; /* Move it down on mobile devices */
+        display: none;
     }
 
     /* Ensure lobbies-container is above mobile nav when nav is closed */
     .lobbies-container {
         z-index: 950 !important; /* Above hamburger but below open sidebar */
+    }
+
+    /* Adjust gradient breakpoint for mobile */
+    .index-page .main-content {
+        background: linear-gradient(
+            to bottom,
+            var(--text-dark) 0%,
+            var(--text-dark) 55%, /* Keep at 55% for mobile */
+            var(--primary-dark) 55%,
+            var(--primary-dark) 100%
+        );
     }
 }
 
