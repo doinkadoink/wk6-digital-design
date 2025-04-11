@@ -1546,6 +1546,27 @@ nav ul li ul li a:hover {
     border-radius: 10px;
 }
 
+/* Scoped top-nav for profile page */
+.profile-page .top-nav {
+    background: var(--primary-dark);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+/* Scoped home-link styles if needed, but global might suffice */
+.profile-page .home-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content; /* Prevent stretching */
+}
+
 /* === End Styles specific to profilepage.html === */
 
 /* === Global Discord Button Styles === */
@@ -1583,7 +1604,23 @@ nav ul li ul li a:hover {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: transform 0.2s; /* Ensure smooth transition if interactive */
+    transition: transform 0.2s;
+}
+
+/* Ensure text inside inherits color */
+.home-link span {
+    color: inherit;
+    font-size: inherit; /* Inherit base size */
+    /* Add font-family if needed */
+    /* font-family: "Eras Bold ITC", sans-serif; */ 
+}
+
+/* Apply tea-highlight style within home-link */
+.home-link .tea-highlight {
+    background: var(--text-dark);
+    color: var(--primary-dark);
+    padding: 0 5px;
+    border-radius: 3px;
 }
 
 /* Add hover if desired globally */
