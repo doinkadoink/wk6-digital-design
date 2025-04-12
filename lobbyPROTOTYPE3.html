@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chattea - Gold Coast Coffee Lovers Lobby</title>
+    <link rel="stylesheet" href="coffee.css">
+    <link rel="icon" href="SVG/warmlogo.svg" type="image/svg+xml" id="favicon">
+</head>
+<body class="lobby-page">
+    <div class="container">
+        <nav class="top-nav">
+            <a href="index.html" class="logo-button">
+                <span>Chat</span><span class="tea-highlight">tea</span>
+            </a>
+            <h1 class="lobby-title">Surfers Paradise Lobby</h1>
+            <div class="theme-toggle interactive-element" onclick="toggleTheme()">
+                <div class="coffee-cup" style="opacity: 1;">
+                    <div class="steam"></div>
+                    <div class="steam"></div>
+                    <div class="steam"></div>
+                    <div class="cup">
+                        <div class="handle"></div>
+                    </div>
+                </div>
+                <div class="iced-glass" style="opacity: 0;">
+                    <div class="ice-cube"></div>
+                    <div class="ice-cube"></div>
+                    <div class="ice-cube"></div>
+                </div>
+            </div>
+        </nav>
+        <div class="lobby-container">
+            <div class="lobby-header">
+                <div class="lobby-info">
+                    <h2>Gold Coast Coffee Lovers</h2>
+                    <span class="active-users">52 active</span>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="users-list">
+                    <div class="user-item interactive-element">
+                        <div class="user-avatar">J</div>
+                        <div>
+                            <div>Jordan</div>
+                            <div class="coffee-preference">☕ Long Black</div>
+                        </div>
+                    </div>
+                    <div class="user-item interactive-element">
+                        <div class="user-avatar">M</div>
+                        <div>
+                            <div>Morgan</div>
+                            <div class="coffee-preference">☕ Mocha</div>
+                        </div>
+                    </div>
+                    <!-- More users would be dynamically added here -->
+                </div>
+
+                <div class="chat-content">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message">
+                            <div class="user-avatar">J</div>
+                            <div class="message-content">
+                                <div>Morning everyone! Any recommendations for beachfront cafes with good Wi-Fi?</div>
+                                <div class="message-meta">Jordan • 3 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">M</div>
+                            <div class="message-content">
+                                <div>Try Esplanade Coffee Co. They have amazing views and fast internet!</div>
+                                <div class="message-meta">Morgan • 2 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">T</div>
+                            <div class="message-content">
+                                <div>Their cold brew is fantastic too - perfect for hot days 🌞</div>
+                                <div class="message-meta">Taylor • 1 minute ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">S</div>
+                            <div class="message-content">
+                                <div>I'm all about their single-origin Ethiopian beans. So good!</div>
+                                <div class="message-meta">Sam • 1 minute ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">J</div>
+                            <div class="message-content">
+                                <div>Thanks for the tips! Anyone up for a coffee meetup there tomorrow?</div>
+                                <div class="message-meta">Jordan • 30 seconds ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">M</div>
+                            <div class="message-content">
+                                <div>I'm in! What time were you thinking?</div>
+                                <div class="message-meta">Morgan • 20 seconds ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">T</div>
+                            <div class="message-content">
+                                <div>Would 10am work? Catch the morning surf vibe 🏄‍♂️</div>
+                                <div class="message-meta">Taylor • 15 seconds ago</div>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="user-avatar">S</div>
+                            <div class="message-content">
+                                <div>Perfect! See you all there!</div>
+                                <div class="message-meta">Sam • 5 seconds ago</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type your message..." id="messageInput">
+                        <button onclick="sendMessage()" class="interactive-element">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'iced' ? 'hot' : 'iced';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Toggle cup visibility only for the theme toggle button
+            const themeToggleCup = document.querySelector('.theme-toggle .coffee-cup');
+            const themeToggleGlass = document.querySelector('.theme-toggle .iced-glass');
+            const favicon = document.getElementById('favicon'); // Get favicon element
+            
+            if (newTheme === 'iced') {
+                themeToggleCup.style.opacity = '0';
+                themeToggleGlass.style.opacity = '1';
+                favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
+            } else {
+                themeToggleCup.style.opacity = '1';
+                themeToggleGlass.style.opacity = '0';
+                favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
+            }
+
+            // Set random rotations for ice cubes
+            document.querySelectorAll('.theme-toggle .ice-cube').forEach(cube => {
+                const rotation = Math.random() * 30 - 15;
+                cube.style.setProperty('--rotation', `${rotation}deg`);
+            });
+        }
+
+        // Initialize theme from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'hot';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Set initial cup visibility based on theme
+            const themeToggleCup = document.querySelector('.theme-toggle .coffee-cup');
+            const themeToggleGlass = document.querySelector('.theme-toggle .iced-glass');
+            const favicon = document.getElementById('favicon'); // Get favicon element
+            
+            if (savedTheme === 'iced') {
+                themeToggleCup.style.opacity = '0';
+                themeToggleGlass.style.opacity = '1';
+                favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
+            } else {
+                themeToggleCup.style.opacity = '1';
+                themeToggleGlass.style.opacity = '0';
+                favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
+            }
+
+            // Initialize ice cube rotations
+            document.querySelectorAll('.theme-toggle .ice-cube').forEach(cube => {
+                const rotation = Math.random() * 30 - 15;
+                cube.style.setProperty('--rotation', `${rotation}deg`);
+            });
+
+            // Auto-scroll to the bottom of the chat
+            const messagesContainer = document.getElementById('chat-messages');
+            if (messagesContainer) {
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        });
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const messagesContainer = document.getElementById('chat-messages');
+                const newMessage = document.createElement('div');
+                newMessage.className = 'message';
+                newMessage.innerHTML = `
+                    <div class="user-avatar">Y</div>
+                    <div class="message-content">
+                        <div>${message}</div>
+                        <div class="message-meta">You • Just now</div>
+                    </div>
+                `;
+                messagesContainer.appendChild(newMessage);
+                
+                // Auto-scroll to the bottom of the chat
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                input.value = '';
+            }
+        }
+
+        // Allow sending message with Enter key
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
