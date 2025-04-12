@@ -813,7 +813,7 @@ nav ul li ul li a:hover {
 
 .coffee-divider {
     position: absolute;
-    top: 45%;
+    top: 60%; /* Increased from 45% to move lower */
     left: -18%;
     right: 0;
     height: 240px;
@@ -848,7 +848,7 @@ nav ul li ul li a:hover {
 
 .coffee-divider-back {
     position: absolute;
-    top: 45%;
+    top: 60%; /* Increased from 45% to move lower */
     left: +30%; /* Restored to original value */
     right: -30%; /* Restored to original value */
     height: 160px;
@@ -864,7 +864,7 @@ nav ul li ul li a:hover {
 
 .coffee-divider-back-2 {
     position: absolute;
-    top: 45%;
+    top: 60%; /* Increased from 45% to move lower */
     left: -50%; /* Restored to original value */
     right: -30%; /* Restored to original value */
     height: 120px;
@@ -2060,12 +2060,17 @@ nav ul li ul li a:hover {
 /* Styles for header content wrapper and map placeholder */
 .index-page .header-content-wrapper {
     display: flex; 
-    justify-content: center; 
+    justify-content: space-between; 
     align-items: flex-start; 
     gap: 2rem; 
     margin-top: 2rem;
     position: relative; /* Needed for absolute positioning of children */
     min-height: 350px; /* Ensure wrapper has height for positioning */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Giant Coffee Animation Styles (Scoped) */
@@ -2086,53 +2091,122 @@ nav ul li ul li a:hover {
     border-radius: 10px;
     background-color: var(--secondary-dark); 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     color: var(--text-dark);
     font-style: italic;
     z-index: 7; /* Ensure map is above coffee animation if they overlap */
-    /* We might need margin or different positioning if flex doesn't work well with absolute coffee */
-    margin-left: calc(50% + 100px + 1rem); /* Push map past centered coffee (50% + half coffee width + gap/2) */
-}
-
-.index-page #map {
-    width: 100%;
-    height: 100%;
-    /* Google Maps JS will target this div */
-}
-
-/* Scoped lobby container specific styles */
-.index-page .lobbies-container {
-    padding: 2rem;
     position: relative;
-    z-index: 1001; 
-    margin-top: 45vh;
-    max-width: 800px; /* Added max-width */
-    margin-left: auto;  /* Center the container */
-    margin-right: auto;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
-/* New styles for lobby search */
-.index-page .lobby-search-container {
-    margin-bottom: 1.5rem; /* Space below search bar */
+/* News & Updates Container */
+.index-page #news-container {
+    width: 400px;
+    height: 300px;
+    border: 2px solid var(--text-dark);
+    border-radius: 10px;
+    background-color: var(--primary-dark);
+    display: flex;
+    flex-direction: column;
+    color: var(--text-dark);
+    z-index: 7;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.index-page #news-container .section-title {
     width: 100%;
+    background: var(--text-dark);
+    color: var(--primary-dark);
+    margin: 0;
+    padding: 0.5rem 0;
+    text-align: center;
+    font-family: "Eras Bold ITC", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    z-index: 2;
 }
 
-.index-page .lobby-search-input {
+.index-page .news-content {
+    padding: 1rem;
+    height: calc(100% - 35px); /* Account for title height */
+    overflow-y: auto;
+}
+
+.index-page .news-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.index-page .news-list li {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.index-page .news-list li:before {
+    content: '☕';
+    position: absolute;
+    left: 0;
+    color: var(--accent-dark);
+}
+
+.index-page .news-list li strong {
+    color: var(--accent-dark);
+    font-weight: bold;
+}
+
+.index-page #map-placeholder-container .section-title {
     width: 100%;
-    padding: 0.8rem 1.5rem;
-    border: 2px solid var(--secondary-dark);
-    border-radius: 25px; /* Match auth buttons */
-    background-color: var(--text-dark);
+    background: var(--text-dark);
     color: var(--primary-dark);
-    font-size: 1rem;
-    font-family: "Ellograph CF", serif;
-    outline: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    text-align: center;
+    font-family: "Eras Bold ITC", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    z-index: 2;
 }
 
-.index-page .lobby-search-input::placeholder {
-    color: var(--primary-dark);
-    opacity: 0.7;
+/* Mobile styles for the header content */
+@media (max-width: 768px) {
+    .index-page .header-content-wrapper {
+       flex-direction: column; /* Stack coffee and map on mobile */
+       align-items: center;
+    }
+    
+    .index-page .giant-coffee-container {
+        position: relative; /* Revert to relative for stacking */
+        left: auto;
+        transform: none;
+        margin-top: 2rem;
+    }
+    
+    /* Adjust map position slightly on mobile if needed */
+    .index-page #map-placeholder-container {
+        /* Example: reduce width or margin */
+        width: calc(100% - 4rem); /* Example: make it responsive */
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Mobile styles for the news container */
+    .index-page #news-container {
+        width: calc(100% - 4rem);
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+        height: auto;
+        min-height: 250px;
+        max-height: 300px;
+    }
 }
 
 /* === Mobile Navigation Styles === */
@@ -2531,6 +2605,126 @@ nav ul li ul li a:hover {
     
     .coffee-icon {
         font-size: 1.5rem;
+    }
+}
+
+/* Media query for desktop screens */
+@media screen and (min-width: 1024px) {
+    .coffee-divider {
+        top: 40%; /* Reduced from 50% to 40% to move further up */
+    }
+    
+    .coffee-divider-back {
+        top: 40%; /* Reduced from 50% to 40% to move further up */
+    }
+    
+    .coffee-divider-back-2 {
+        top: 40%; /* Reduced from 50% to 40% to move further up */
+    }
+
+    /* Adjust the linear gradient breakpoint for desktop */
+    .main-content {
+        background: linear-gradient(
+            to bottom,
+            var(--text-dark) 0%,
+            var(--text-dark) 40%, /* Reduced from 50% to 40% to match wave position */
+            var(--primary-dark) 40%,
+            var(--primary-dark) 100%
+        );
+    }
+
+    /* Adjust lobbies container position to match new gradient */
+    .lobbies-container {
+        margin-top: 45vh; /* Adjusted to better position relative to the 40% gradient */
+    }
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 768px) {
+    /* Adjust coffee divider positions for mobile */
+    .coffee-divider-back {
+        left: -50%; /* Move further left to ensure it covers the edge on mobile */
+        right: 0;
+    }
+    
+    .coffee-divider-back-2 {
+        left: -80%; /* Move further left to ensure it covers the edge on mobile */
+        right: 0;
+    }
+}
+
+.index-page #map {
+    width: 100%;
+    height: calc(100% - 35px); /* Account for title height */
+    /* Google Maps JS will target this div */
+}
+
+/* Scoped lobby container specific styles */
+.index-page .lobbies-container {
+    padding: 2rem;
+    position: relative;
+    z-index: 1001; 
+    margin-top: 45vh;
+    max-width: 800px; /* Added max-width */
+    margin-left: auto;  /* Center the container */
+    margin-right: auto;
+}
+
+.index-page .lobbies-title {
+    color: var(--text-dark);
+    font-family: "Eras Bold ITC", sans-serif;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* New styles for lobby search */
+.index-page .lobby-search-container {
+    margin-bottom: 1.5rem; /* Space below search bar */
+    width: 100%;
+}
+
+.index-page .lobby-search-input {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--secondary-dark);
+    border-radius: 25px; /* Match auth buttons */
+    background-color: var(--text-dark);
+    color: var(--primary-dark);
+    font-size: 1rem;
+    font-family: "Ellograph CF", serif;
+    outline: none;
+}
+
+.index-page .lobby-search-input::placeholder {
+    color: var(--primary-dark);
+    opacity: 0.7;
+}
+
+/* Desktop positioning - override the margins for larger screens */
+@media (min-width: 1024px) {
+    .index-page .header-content-wrapper {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    .index-page #news-container {
+        margin-right: 0;
+        order: 1; /* Place on left side */
+    }
+    
+    .index-page #map-placeholder-container {
+        margin-left: 0;
+        order: 3; /* Place on right side */
+    }
+    
+    /* Add empty space in the middle for the coffee animation */
+    .index-page .header-content-wrapper::before {
+        content: "";
+        width: 200px; /* Width of coffee container */
+        order: 2; /* Place between news and map */
+        flex-shrink: 0;
     }
 }
 
