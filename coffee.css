@@ -1259,7 +1259,7 @@ nav ul li ul li a:hover {
 }
 
 .about-page .company-info {
-    color: var(--primary-dark);
+    color: var(--light-text);
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2rem;

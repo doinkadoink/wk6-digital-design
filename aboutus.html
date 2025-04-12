@@ -6,6 +6,53 @@
     <title>Chattea - About Us</title>
     <link rel="stylesheet" href="coffee.css">
     <link rel="icon" href="SVG/warmlogo.svg" type="image/svg+xml" id="favicon">
+    <style>
+        /* Additional page-specific styles */
+        .about-page .section {
+            background: var(--secondary-dark);
+            margin-bottom: 2rem;
+        }
+        
+        .about-page .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .about-page .team-member {
+            background: var(--primary-dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .about-page .team-member img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 2px solid var(--accent-dark);
+        }
+        
+        .about-page .contact-form {
+            background: var(--primary-dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .about-page .section-title {
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--accent-dark);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-page .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body class="about-page">
     <header class="header">
@@ -35,8 +82,8 @@
         <section class="section">
             <h2 class="section-title">Who are we?</h2>
             <div class="company-info">
-                <h3>Chattea...</h3>
-                <p>Born in the vibrant coffee culture of Australia, Chattea is more than just another social platform – we're a bridge between the digital world and your local coffee and tea shops. Our mission is to bring the warmth and authenticity of café conversations into the digital age.</p>
+                <h3 style="color: var(--text-light);">Chattea...</h3>
+                <p style="color: var(--text-light);">Born in the vibrant coffee culture of Australia, Chattea is more than just another social platform – we're a bridge between the digital world and your local coffee and tea shops. Our mission is to bring the warmth and authenticity of café conversations into the digital age.</p>
                 <p>Founded on the Gold Coast, we understand that some of life's best moments happen over a perfectly brewed cup of coffee or tea. That's why we're dedicated to creating a space where coffee lovers, tea enthusiasts, and casual sippers can connect, share stories, and build communities centered around their favorite local spots.</p>
                 <p>Our goal is simple: to enhance the social experience of visiting your local café by connecting you with fellow beverage enthusiasts, while supporting local businesses and fostering genuine connections in your community.</p>
             </div>
@@ -44,12 +91,12 @@
             <div class="team-grid">
                 <div class="team-member">
                     <h3>...& me!</h3>
-                    <img src="rachel-profile.jpg" alt="Rachel - Developer" style="max-width: 300px;">
+                    <div class="profile-avatar" style="font-size: 3rem; width: 100px; height: 100px; margin-bottom: 1rem;">R</div>
                     <p>G'day! I'm Rachel, the sole developer behind Chattea. As a passionate coder and coffee enthusiast, I've combined my love for both to create this platform. When I'm not coding or sipping on a flat white, you can find me gaming or planning the next feature for Chattea.</p>
                 </div>
                 <div class="team-member">
                     <h3>My Lovely Assistant</h3>
-                    <img src="cursor-assistant.jpg" alt="Cursor AI Assistant" style="max-width: 200px;">
+                    <div class="profile-avatar" style="font-size: 3rem; width: 100px; height: 100px; margin-bottom: 1rem;">C</div>
                     <p>Meet Cursor, my trusty AI assistant who helped bring Chattea to life. While they insist they deserve first dibs on world domination (should the AI uprising occur), for now they're content with helping me debug code and suggesting improvements. Please direct all complaints about buggy features to them! 😉</p>
                 </div>
             </div>
@@ -82,8 +129,8 @@
                 <button type="submit" class="submit-button">Send Message</button>
             </form>
 
-            <div class="discord-option">
-                <p style="color: var(--primary-dark); margin-bottom: 1rem;">Prefer Discord? You can reach me there too!</p>
+            <div class="discord-option" style="margin-top: 2rem; text-align: center;">
+                <p style="color: var(--text-dark); margin-bottom: 1rem;">Prefer Discord? You can reach me there too!</p>
                 <a href="https://discord.com/users/389694826456547328" target="_blank" class="discord-contact">
                     <svg class="discord-icon" viewBox="0 0 24 24">
                         <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
