@@ -2808,3 +2808,11 @@ nav ul li ul li a:hover {
     .index-page .wave-animation-container .coffee-divider-back,
     .index-page .wave-animation-container .coffee-divider-back-2 { transform: none; }
 }
+
+/* Let the coffee reach the edges despite the original main padding. */
+.index-page .wave-animation-container,
+.index-page .lobbies-container {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+}
