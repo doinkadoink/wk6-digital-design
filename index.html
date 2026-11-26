@@ -1,130 +1,286 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="index-html-root">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#38231f">
-  <meta name="description" content="ChatTea is a coffee-themed community prototype with local chat lobbies.">
-  <title>ChatTea | Connect over coffee</title>
-  <link rel="icon" href="SVG/warmlogo.svg" type="image/svg+xml" id="favicon">
-  <link rel="stylesheet" href="homepage.css">
-  <script>
-    try { document.documentElement.dataset.theme = localStorage.getItem('theme') === 'iced' ? 'iced' : 'hot'; } catch (e) { document.documentElement.dataset.theme = 'hot'; }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chattea - Connect Over Coffee</title>
+    <link rel="stylesheet" href="coffee.css">
+    <link rel="icon" href="SVG/warmlogo.svg" type="image/svg+xml" id="favicon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-  <a class="skip-link" href="#lobbies">Skip to lobbies</a>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="ChatTea home">
-        <img id="header-logo" src="warmlogo.png" alt="" width="46" height="46">
-        <span>Chat<span>Tea</span></span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-        <a href="#lobbies">Lobbies</a>
-        <a href="profilepage.html">Profile</a>
-        <a href="settingspage.html">Settings</a>
-        <a href="aboutus.html">About us</a>
-        <a href="Helppage.html">Help</a>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="Switch between hot and iced themes"><span aria-hidden="true">☕</span> <span class="theme-label">Hot brew</span></button>
+<body class="index-page">
+    <!-- Hamburger Button (Mobile Only) -->
+    <button class="mobile-nav-toggle" id="mobile-nav-open" aria-label="Open navigation"><i class="fas fa-bars"></i></button>
+
+    <div class="page-container">
+        <aside class="sidebar" id="sidebar">
+            <!-- Close Button (Mobile Only, inside sidebar) -->
+            <button class="mobile-nav-toggle sidebar-close" id="mobile-nav-close" aria-label="Close navigation"><i class="fas fa-arrow-left"></i></button>
+            
+            <div class="sidebar-top">
+                <div class="theme-toggle" onclick="toggleTheme()">
+                    <div class="coffee-cup" style="opacity: 1;">
+                        <div class="steam"></div>
+                        <div class="steam"></div>
+                        <div class="steam"></div>
+                        <div class="cup">
+                            <div class="handle"></div>
+                        </div>
+                    </div>
+                    <div class="iced-glass" style="opacity: 0;">
+                        <div class="ice-cube"></div>
+                        <div class="ice-cube"></div>
+                        <div class="ice-cube"></div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="profilepage.html">Profile</a></li>
+                    <li><a href="settingspage.html">Settings</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="Helppage.html">Help</a></li>
+                </ul>
+            </nav>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="bean-rain-container" id="bean-container"></div>
+            
+            <img id="header-logo" src="warmlogo.png" alt="Chattea Logo" class="header-logo-img">
+
+            <div class="main-header">
+                <h1 class="main-title">
+                    <span class="word-box chat-box">Chat</span>
+                    <span class="word-box tea-box">tea</span>
+                </h1>
+                <!-- Wrapper for coffee animation and map -->
+                <div class="header-content-wrapper">
+                <div class="giant-coffee-container">
+                    <div class="giant-cup">
+                        <div class="giant-coffee"></div>
+                        <div class="coffee-stream"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- News & Updates Container -->
+                    <div id="news-container">
+                        <h3 class="section-title">News & Updates</h3>
+                        <div class="news-content">
+                            <ul class="news-list">
+                                <li><strong>Coming Soon:</strong> Live Servers!</li>
+                                <li><strong>In Development:</strong> Coffee shop locator map</li>
+                                <li><strong>Future Plans:</strong> Game mode chat rooms</li>
+                                <li><strong>Just Added:</strong> Help center with support resources</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Placeholder with Title -->
+                    <div id="map-placeholder-container">
+                        <h3 class="section-title">Locals near you!</h3>
+                        <iframe 
+                            id="map"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; border-radius: 5px;" 
+                            loading="lazy" 
+                            allowfullscreen 
+                            referrerpolicy="no-referrer-when-downgrade" 
+                            /* Switched to simpler embed URL */
+                            src="https://maps.google.com/maps?q=Gold%20Coast%20Australia&t=&z=11&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                        <!-- Future JavaScript will initialize Google Map here -->
+                    </div>
+                </div>
+            </div>
+            <div class="auth-buttons">
+                <a href="loginpage.html"><button class="auth-button signup-btn">Sign Up</button></a>
+                <a href="loginpage.html"><button class="auth-button login-btn">Login</button></a>
+                <button class="auth-button guest-btn">can't be bothered? view as guest</button>
+            </div>
+            
+            <!-- Wrap wave elements -->
+            <div class="wave-animation-container">
+            <div class="wave-cover"></div>
+            <div class="coffee-divider"></div>
+            <div class="coffee-divider-back"></div>
+            <div class="coffee-divider-back-2"></div>
+            </div>
+
+            <div class="lobbies-container">
+                <!-- Lobbies Title -->
+                <h2 class="lobbies-title">Lobbies</h2>
+                
+                <!-- Search Bar Added -->
+                <div class="lobby-search-container">
+                    <input type="search" placeholder="Search for local coffee lobbies..." class="lobby-search-input">
+                    <!-- Add a search icon/button if desired -->
+                </div>
+                
+                <div class="lobby-list">
+                    <a href="lobbyPROTOTYPE.html" class="lobby-item">
+                        <div class="lobby-info">
+                            <h3>Southport</h3>
+                        </div>
+                        <span class="lobby-capacity">3/20</span>
+                    </a>
+                    <a href="lobbyPROTOTYPE2.html" class="lobby-item">
+                        <div class="lobby-info">
+                            <h3>Broadbeach</h3>
+                        </div>
+                        <span class="lobby-capacity">15/20</span>
+                    </a>
+                    <a href="lobbyPROTOTYPE3.html" class="lobby-item">
+                        <div class="lobby-info">
+                            <h3>Surfers</h3>
+                        </div>
+                        <span class="lobby-capacity">12/20</span>
+                    </a>
+                </div>
+            </div>
+    </main>
     </div>
-  </header>
 
-  <main>
-    <section class="intro" aria-labelledby="intro-title">
-      <div class="intro-inner">
-        <p class="eyebrow">A LITTLE SPACE TO CONNECT</p>
-        <h1 id="intro-title">Good chats start<br>with <em>coffee.</em></h1>
-        <p class="lead">Find a local lobby, settle in and meet people in your corner of the Gold Coast.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#lobbies">Explore lobbies</a>
-          <a class="button button-outline" href="loginpage.html">Log in or sign up</a>
-        </div>
-        <p class="prototype-note">A community website prototype. Live chat is coming soon.</p>
-      </div>
-      <div class="intro-panels">
-        <section class="info-panel updates" aria-labelledby="updates-title">
-          <span class="panel-icon" aria-hidden="true">✦</span>
-          <h2 id="updates-title">Fresh from ChatTea</h2>
-          <ul>
-            <li><span>Coming soon</span> Live servers</li>
-            <li><span>In development</span> Coffee shop locator</li>
-            <li><span>Future plans</span> Game mode chat rooms</li>
-          </ul>
-          <a href="Helppage.html">Visit the help centre <span aria-hidden="true">↗</span></a>
-        </section>
-        <section class="info-panel map-panel" aria-labelledby="map-title">
-          <div class="map-heading"><div><span class="panel-kicker">SAY HELLO, LOCALLY</span><h2 id="map-title">Around the Gold Coast</h2></div><span aria-hidden="true">◎</span></div>
-          <iframe title="Map of the Gold Coast, Australia" src="https://maps.google.com/maps?q=Gold%20Coast%20Australia&t=&z=11&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <p>Map preview · local discovery is in development</p>
-        </section>
-      </div>
-    </section>
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'iced' ? 'hot' : 'iced';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
 
-    <div class="pour-scene" aria-hidden="true">
-      <div class="pour-cup"><span class="cup-coffee"></span></div>
-      <div class="pour-stream"></div>
-      <svg class="coffee-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" focusable="false"><path d="M0 65 C190 10 340 112 525 68 C710 24 785 23 960 68 C1140 112 1270 17 1440 52 L1440 120 L0 120 Z"></path></svg>
-    </div>
+            // Toggle cup visibility
+            const coffeeCup = document.querySelector('.coffee-cup');
+            const icedGlass = document.querySelector('.iced-glass');
+            const headerLogo = document.getElementById('header-logo'); // Get header logo element
+            const favicon = document.getElementById('favicon'); // Get favicon element
+            
+            if (newTheme === 'iced') {
+                coffeeCup.style.opacity = '0';
+                icedGlass.style.opacity = '1';
+                headerLogo.src = 'coollogo.png'; // Set cool logo
+                favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
+            } else {
+                coffeeCup.style.opacity = '1';
+                icedGlass.style.opacity = '0';
+                headerLogo.src = 'warmlogo.png'; // Set warm logo
+                favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
+            }
 
-    <section class="lobbies" id="lobbies" aria-labelledby="lobbies-title">
-      <div class="lobbies-inner">
-        <div class="section-heading">
-          <div><p class="eyebrow">PULL UP A CHAIR</p><h2 id="lobbies-title">Find your lobby</h2><p>Choose a neighbourhood to explore a prototype chat room.</p></div>
-          <span class="lobby-count">3 local spots</span>
-        </div>
-        <label class="search-label" for="lobby-search">Search lobbies</label>
-        <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="lobby-search" type="search" placeholder="Search by neighbourhood" autocomplete="off"></div>
-        <div class="lobby-list" id="lobby-list">
-          <a href="lobbyPROTOTYPE.html" class="lobby-card" data-name="southport"><span class="lobby-initial" aria-hidden="true">S</span><span class="lobby-copy"><strong>Southport</strong><small>Local chat lobby</small></span><span class="lobby-capacity">3 / 20</span><span class="lobby-arrow" aria-hidden="true">›</span></a>
-          <a href="lobbyPROTOTYPE2.html" class="lobby-card" data-name="broadbeach"><span class="lobby-initial" aria-hidden="true">B</span><span class="lobby-copy"><strong>Broadbeach</strong><small>Local chat lobby</small></span><span class="lobby-capacity">15 / 20</span><span class="lobby-arrow" aria-hidden="true">›</span></a>
-          <a href="lobbyPROTOTYPE3.html" class="lobby-card" data-name="surfers"><span class="lobby-initial" aria-hidden="true">S</span><span class="lobby-copy"><strong>Surfers</strong><small>Local chat lobby</small></span><span class="lobby-capacity">12 / 20</span><span class="lobby-arrow" aria-hidden="true">›</span></a>
-        </div>
-        <p id="no-results" class="no-results" hidden>No lobbies found. Try another neighbourhood.</p>
-      </div>
-    </section>
-  </main>
-  <footer><span>ChatTea · Connect over coffee</span><a href="aboutus.html">About ChatTea</a><a href="Helppage.html">Help</a></footer>
-  <script>
-    const root = document.documentElement;
-    const themeButton = document.querySelector('.theme-toggle');
-    const themeLabel = document.querySelector('.theme-label');
-    const logo = document.querySelector('#header-logo');
-    const favicon = document.querySelector('#favicon');
-    function updateTheme() {
-      const iced = root.dataset.theme === 'iced';
-      themeLabel.textContent = iced ? 'Iced brew' : 'Hot brew';
-      themeButton.setAttribute('aria-label', iced ? 'Switch to hot coffee theme' : 'Switch to iced coffee theme');
-      themeButton.querySelector('span').textContent = iced ? '🧊' : '☕';
-      logo.src = iced ? 'coollogo.png' : 'warmlogo.png';
-      favicon.href = iced ? 'SVG/coollogo.svg' : 'SVG/warmlogo.svg';
-    }
-    themeButton.addEventListener('click', () => {
-      root.dataset.theme = root.dataset.theme === 'iced' ? 'hot' : 'iced';
-      try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
-      updateTheme();
-    });
-    updateTheme();
-    const menuButton = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('#site-nav');
-    menuButton.addEventListener('click', () => {
-      const open = menuButton.getAttribute('aria-expanded') === 'true';
-      menuButton.setAttribute('aria-expanded', String(!open));
-      nav.classList.toggle('is-open', !open);
-    });
-    nav.addEventListener('click', event => {
-      if (event.target.closest('a')) { nav.classList.remove('is-open'); menuButton.setAttribute('aria-expanded', 'false'); }
-    });
-    const search = document.querySelector('#lobby-search');
-    const cards = [...document.querySelectorAll('.lobby-card')];
-    search.addEventListener('input', () => {
-      const query = search.value.trim().toLowerCase();
-      let shown = 0;
-      cards.forEach(card => { const match = card.dataset.name.includes(query); card.hidden = !match; if (match) shown++; });
-      document.querySelector('#no-results').hidden = shown !== 0;
-    });
-  </script>
+            // Set random rotations for ice cubes
+            document.querySelectorAll('.ice-cube').forEach(cube => {
+                const rotation = Math.random() * 30 - 15;
+                cube.style.setProperty('--rotation', `${rotation}deg`);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'hot';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Set initial cup visibility based on theme
+            const coffeeCup = document.querySelector('.coffee-cup');
+            const icedGlass = document.querySelector('.iced-glass');
+            const headerLogo = document.getElementById('header-logo'); // Get header logo element
+            const favicon = document.getElementById('favicon'); // Get favicon element
+            
+            if (savedTheme === 'iced') {
+                coffeeCup.style.opacity = '0';
+                icedGlass.style.opacity = '1';
+                headerLogo.src = 'coollogo.png'; // Set initial cool logo
+                favicon.href = 'SVG/coollogo.svg'; // Set initial cool favicon
+            } else {
+                coffeeCup.style.opacity = '1';
+                icedGlass.style.opacity = '0';
+                headerLogo.src = 'warmlogo.png'; // Set initial warm logo
+                favicon.href = 'SVG/warmlogo.svg'; // Set initial warm favicon
+            }
+
+            // Initialize ice cube rotations
+            document.querySelectorAll('.ice-cube').forEach(cube => {
+                const rotation = Math.random() * 30 - 15;
+                cube.style.setProperty('--rotation', `${rotation}deg`);
+            });
+        });
+
+        // Bean Rain Animation Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const beanContainer = document.getElementById('bean-container');
+            const numberOfBeans = 50; // Adjust density as needed
+
+            for (let i = 0; i < numberOfBeans; i++) {
+                const bean = document.createElement('div');
+                bean.classList.add('coffee-bean');
+                
+                // Random horizontal position
+                bean.style.left = `${Math.random() * 100}vw`;
+                
+                // Random animation delay and duration variation
+                const duration = Math.random() * 5 + 8; // Between 8 and 13 seconds
+                const delay = Math.random() * 10; // Stagger start times
+                bean.style.animationDuration = `${duration}s`;
+                bean.style.animationDelay = `-${delay}s`; // Negative delay starts partway through
+                
+                // Random size variation
+                const scale = Math.random() * 0.6 + 0.7; // Between 0.7 and 1.3 scale
+                bean.style.transform = `scale(${scale})`;
+                
+                beanContainer.appendChild(bean);
+            }
+            
+            // Re-trigger theme function AFTER beans are created to apply correct color
+            const savedTheme = localStorage.getItem('theme') || 'hot';
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                // Manually call parts of toggleTheme needed for color update
+                const headerLogo = document.getElementById('header-logo');
+                const coffeeCup = document.querySelector('.theme-toggle .coffee-cup'); // Target toggle specifically
+                const icedGlass = document.querySelector('.theme-toggle .iced-glass');
+                const favicon = document.getElementById('favicon'); // Get favicon element
+                if (savedTheme === 'iced') {
+                    if (coffeeCup) coffeeCup.style.opacity = '0';
+                    if (icedGlass) icedGlass.style.opacity = '1';
+                    if (headerLogo) headerLogo.src = 'coollogo.png';
+                    if (favicon) favicon.href = 'SVG/coollogo.svg'; // Set cool favicon
+                } else {
+                    if (coffeeCup) coffeeCup.style.opacity = '1';
+                    if (icedGlass) icedGlass.style.opacity = '0';
+                    if (headerLogo) headerLogo.src = 'warmlogo.png';
+                    if (favicon) favicon.href = 'SVG/warmlogo.svg'; // Set warm favicon
+                }
+            }
+        });
+
+        // Mobile Sidebar Toggle Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const openButton = document.getElementById('mobile-nav-open');
+            const closeButton = document.getElementById('mobile-nav-close');
+
+            if (openButton && sidebar) {
+                openButton.addEventListener('click', () => {
+                    sidebar.classList.add('sidebar-open');
+                });
+            }
+
+            if (closeButton && sidebar) {
+                closeButton.addEventListener('click', () => {
+                    sidebar.classList.remove('sidebar-open');
+                });
+            }
+            
+            // Optional: Close sidebar when clicking outside on mobile
+            document.addEventListener('click', (event) => {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickOnOpenButton = openButton.contains(event.target);
+                
+                if (!isClickInsideSidebar && !isClickOnOpenButton && sidebar.classList.contains('sidebar-open')) {
+                    if (window.innerWidth <= 768) { // Only apply on mobile
+                         sidebar.classList.remove('sidebar-open');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
