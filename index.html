@@ -282,5 +282,29 @@
             });
         });
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const main = document.querySelector('.index-page .main-content');
+  const cup = document.querySelector('.giant-cup');
+  const stream = document.querySelector('.coffee-stream');
+  const wave = document.querySelector('.wave-animation-container');
+  if (!main || !cup || !stream || !wave) return;
+  // Position the existing stream against the same wave that starts the lobby background.
+  main.appendChild(stream);
+  function alignCoffeePour() {
+    const mainBox = main.getBoundingClientRect();
+    const cupBox = cup.getBoundingClientRect();
+    const waveBox = wave.getBoundingClientRect();
+    const top = cupBox.bottom - mainBox.top - 12;
+    const bottom = waveBox.bottom - mainBox.top - 55;
+    stream.style.left = (cupBox.left + cupBox.width / 2 - mainBox.left) + 'px';
+    stream.style.top = top + 'px';
+    stream.style.setProperty('--pour-height', Math.max(0, bottom - top) + 'px');
+  }
+  alignCoffeePour();
+  window.addEventListener('resize', alignCoffeePour);
+  window.addEventListener('load', alignCoffeePour);
+});
+</script>
 </body>
 </html>

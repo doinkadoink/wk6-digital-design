@@ -2730,3 +2730,81 @@ nav ul li ul li a:hover {
 
 
 
+
+
+/* Homepage coffee transition: keep the original art and align it to the lobby. */
+.index-page .main-content {
+    background: var(--text-dark);
+    padding-bottom: 0;
+}
+.index-page .wave-animation-container {
+    height: 45vh;
+    min-height: 180px;
+    margin-top: 0;
+    overflow: hidden;
+    z-index: 6;
+}
+.index-page .wave-animation-container .coffee-divider,
+.index-page .wave-animation-container .coffee-divider-back,
+.index-page .wave-animation-container .coffee-divider-back-2 {
+    left: -10%;
+    right: auto;
+    top: auto;
+    bottom: -1px;
+    width: 120%;
+    height: 120px;
+    clip-path: none;
+    background: var(--primary-dark);
+    border-radius: 50% 50% 0 0 / 65% 65% 0 0;
+    transform: translateY(100%);
+    animation: chattea-wave-rise 1.6s 2.5s ease-out forwards;
+}
+.index-page .wave-animation-container .coffee-divider-back {
+    left: -35%;
+    width: 110%;
+    height: 105px;
+    opacity: .7;
+    animation-delay: 2.35s;
+}
+.index-page .wave-animation-container .coffee-divider-back-2 {
+    left: 25%;
+    width: 110%;
+    height: 95px;
+    opacity: .7;
+    animation-delay: 2.4s;
+}
+.index-page .lobbies-container {
+    max-width: none;
+    width: 100%;
+    padding: 2rem max(2rem, calc((100% - 800px) / 2)) 6rem;
+    margin: 0;
+    background: var(--primary-dark);
+}
+.index-page .main-content > .coffee-stream {
+    position: absolute;
+    width: 40px;
+    height: var(--pour-height, 0px);
+    z-index: 5;
+    transform-origin: top;
+    transform: translateX(-50%) scaleY(0);
+    animation: chattea-pour 2s 1.5s ease forwards;
+    pointer-events: none;
+}
+@keyframes chattea-pour {
+    to { transform: translateX(-50%) scaleY(1); }
+}
+@keyframes chattea-wave-rise {
+    to { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .index-page .main-content > .coffee-stream,
+    .index-page .wave-animation-container .coffee-divider,
+    .index-page .wave-animation-container .coffee-divider-back,
+    .index-page .wave-animation-container .coffee-divider-back-2 {
+        animation: none;
+    }
+    .index-page .main-content > .coffee-stream { transform: translateX(-50%); }
+    .index-page .wave-animation-container .coffee-divider,
+    .index-page .wave-animation-container .coffee-divider-back,
+    .index-page .wave-animation-container .coffee-divider-back-2 { transform: none; }
+}
